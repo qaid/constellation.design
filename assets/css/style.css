@@ -96,10 +96,19 @@ img {
 }
 
 video {
+    top: 50%;
+    left: 50%;
     background-size: cover;
     display: table-cell;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    transform: translateX(-50%) translateY(-50%);
+    transition: 1s opacity;
     vertical-align: middle;
-    width: 100%;
+    width: auto;
+    z-index: -100;
 }
 
 input,
