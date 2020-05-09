@@ -10634,7 +10634,7 @@ nav.navbar.bootsnav .btn-hamburger .navbar-toggler {
 /* header style two */
 .header-with-topbar .navbar-top,
 .header-with-topbar .navbar-fixed-top {
-    top: 36px;
+    top: 0px;
     background: #fff;
     box-shadow: 0 4px 10px -10px rgba(0, 0, 0, 0.6)
 }
