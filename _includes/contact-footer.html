@@ -1,0 +1,66 @@
+<!-- start footer content--> 
+<a id="contact"></a>
+<footer class="footer-strip-dark padding-90px-tb lg-padding-70px-tb md-padding-50px-tb sm-padding-40px-tb bg-white">
+    <div class="container">
+        <div class="border-top border-color-extra-light-gray padding-80px-top margin-80px-top lg-padding-60px-top lg-margin-60px-top md-padding-50px-top md-margin-50px-top sm-padding-40px-top sm-margin-40px-top">
+            <div class="row align-items-center">
+                <!-- start logo -->
+                <div class="col-lg-3 col-md-12 md-text-center md-margin-50px-bottom sm-margin-30px-bottom">
+                    <a href="index.html"><img class="footer-logo" src="images/logo.png" data-rjs="images/logo@2x.png" alt="Pofo"></a>
+                </div> 
+                <!-- end logo -->
+                <!-- start copyright -->
+                <div class="col-lg-4 col-md-5 col-12 sm-margin-30px-bottom text-medium sm-text-center">
+                    301 The Greenhouse,<br>
+                    Custard Factory, London, E2 8DY.
+                </div>
+                <div class="col-lg-3 col-md-4 col-12 sm-margin-30px-bottom text-medium sm-text-center">
+                    +44 (0) 123 456 7890<br>
+                    <a href="mailto:sales@domain.com">sales@domain.com</a>
+                </div>
+                <!-- end copyright -->
+                <!-- start social media -->
+                <div class="col-lg-2 col-md-3 text-md-right sm-text-center">
+                    <div class="social-icon-style-8 d-inline-block vertical-align-middle">
+                        <ul class="small-icon mb-0">
+                            <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                            <li><a class="twitter" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a class="google" href="https://plus.google.com" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a class="instagram" href="https://instagram.com/" target="_blank"><i class="fab fa-instagram mr-0" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end social media -->
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end footer -->
+
+<!-- start scroll to top -->
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="ti-arrow-up"></i></a>
+<!-- end scroll to top  -->
+
+<!-- javascript libraries -->
+{% for path in site.data.assets.js %}    
+
+  {%- if path contains '://' -%}
+    {%- assign src = path -%}
+  {%- else -%}
+    {%- assign src = path | relative_url -%}
+  {%- endif -%}
+
+  <script src="{{ src }}" type="text/javascript"></script>
+{% endfor %}
+
+
+<!-- revolution slider extensions (load below extensions JS files only on local file systems to make the slider work! The following part can be removed on server for on demand loading) -->
+<!--<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.video.min.js"></script>-->
