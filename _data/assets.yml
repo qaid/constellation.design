@@ -62,3 +62,66 @@ js:
   #revolution
   - /assets/revolution/js/jquery.themepunch.tools.min.js
   - /assets/revolution/js/jquery.themepunch.revolution.min.js
+
+favicons:
+  - rel: apple-touch-icon
+    type: 
+    sizes: 57x57 
+    href: /assets/images/apple-icon-57x57.png
+  - rel: apple-touch-icon 
+    type:
+    sizes: 60x60 
+    href: /assets/images/apple-icon-60x60.png
+  - rel: apple-touch-icon 
+    type:
+    sizes: 72x72 
+    href: /assets/images/apple-icon-72x72.png
+  - rel: apple-touch-icon 
+    type:
+    sizes: 76x76 
+    href: /assets/images/apple-icon-76x76.png
+  - rel: apple-touch-icon
+    type: 
+    sizes: 114x114 
+    href: /assets/images/apple-icon-114x114.png
+  - rel: apple-touch-icon
+    type: 
+    sizes: 120x120 
+    href: /assets/images/apple-icon-120x120.png
+  - rel: apple-touch-icon
+    type: 
+    sizes: 144x144 
+    href: /assets/images/apple-icon-144x144.png
+  - rel: apple-touch-icon 
+    type:
+    sizes: 152x152 
+    href: /assets/images/apple-icon-152x152.png
+  - rel: apple-touch-icon
+    type: 
+    sizes: 180x180 
+    href: /assets/images/apple-icon-180x180.png
+  - rel: icon
+    type: 
+    type: image/png 
+    sizes: 192x192  
+    href: /assets/images/android-icon-192x192.png
+  - rel: icon
+    type: 
+    type: image/png 
+    sizes: 32x32 
+    href: /favicon-32x32.png
+  - rel: icon
+    type: 
+    type: image/png 
+    sizes: 96x96 
+    href: /favicon-96x96.png
+  - rel: icon
+    type: 
+    type: image/png 
+    sizes: 16x16 
+    href: /favicon-16x16.png
+  - rel: manifest
+    type: 
+    href: /manifest.json
+  - rel: shortcut icon
+    href: /assets/images/favicon.png
