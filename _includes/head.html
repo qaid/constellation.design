@@ -28,34 +28,22 @@
   <meta name="msapplication-TileImage" content="assets/images/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <link rel="shortcut icon" href="assets/images/favicon.png">
+
+  {% for path in site.data.assets.css %}
   
-  <!-- animation -->
-  <link rel="stylesheet" href="assets/css/animate.css" />
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <!-- et line icon --> 
-  <link rel="stylesheet" href="assets/css/et-line-icons.css" />
-  <!-- font-awesome icon -->
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-  <!-- themify icon -->
-  <link rel="stylesheet" href="assets/css/themify-icons.css">
-  <!-- swiper carousel -->
-  <link rel="stylesheet" href="assets/css/swiper.min.css">
-  <!-- justified gallery  -->
-  <link rel="stylesheet" href="assets/css/justified-gallery.min.css">
-  <!-- magnific popup -->
-  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    {%- if path contains '://' -%}
+      {%- assign href = path -%}
+    {%- else -%}
+      {%- assign href = path | relative_url -%}
+    {%- endif -%}
+
+    <link rel="stylesheet" href="{{ href }}">
+  {% endfor %}
+  
+  
   <!-- revolution slider -->
   <link rel="stylesheet" type="text/css" href="assets/revolution/css/settings.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="assets/revolution/css/layers.css">
-  <link rel="stylesheet" type="text/css" href="assets/revolution/css/navigation.css">
-  <!-- bootsnav -->
-  <link rel="stylesheet" href="assets/css/bootsnav.css">
-  <!-- style -->
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <!-- responsive css -->
-  <link rel="stylesheet" href="assets/css/responsive.css" />
   <!--[if IE]>
-      <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/html5shiv.js"></script>
   <![endif]-->
 </head>

@@ -1,0 +1,64 @@
+css:
+  - /assets/css/animate.css
+  - /assets/css/bootstrap.min.css
+  - /assets/css/et-line-icons.css
+  - /assets/css/font-awesome.min.css
+  - /assets/css/themify-icons.css
+  - /assets/css/swiper.min.css
+  - /assets/css/justified-gallery.min.css
+  - /assets/css/magnific-popup.css
+  - /assets/css/bootsnav.css
+  - /assets/css/style.css
+  - /assets/css/responsive.css
+  - /assets/revolution/css/layers.css
+  - /assets/revolution/css/navigation.css
+  
+js:
+  - /assets/js/jquery.js
+  - /assets/js/modernizr.js
+  - /assets/js/bootstrap.bundle.js
+  - /assets/js/jquery.easing.1.3.js
+  - /assets/js/skrollr.min.js
+  - /assets/js/smooth-scroll.js
+  - /assets/js/jquery.appear.js
+  #setting
+  - /assets/js/main.js
+  #menu navigation
+  - /assets/js/bootsnav.js
+  - /assets/js/jquery.nav.js
+  #animation
+  - /assets/js/wow.min.js
+  #page scroll
+  - /assets/js/page-scroll.js
+  #swiper carousel
+  - /assets/js/swiper.min.js
+  #counter
+  - /assets/js/jquery.count-to.js
+  #parallax
+  - /assets/js/jquery.stellar.js
+  #magnific popup
+  - /assets/js/jquery.magnific-popup.min.js
+  #portfolio with shorting tab
+  - /assets/js/isotope.pkgd.min.js
+  #images loaded
+  - /assets/js/imagesloaded.pkgd.min.js
+  #pull menu
+  - /assets/js/classie.js
+  - /assets/js/hamburger-menu.js
+  #counter 
+  - /assets/js/counter.js
+  #fit video 
+  - /assets/js/jquery.fitvids.js
+  #skill bars 
+  - /assets/js/skill.bars.jquery.js 
+  #justified gallery 
+  - /assets/js/justified-gallery.min.js
+  #pie chart
+  - /assets/js/jquery.easypiechart.min.js
+  #instagram
+  - /assets/js/instafeed.min.js
+  #retina
+  - /assets/js/retina.min.js
+  #revolution
+  - /assets/revolution/js/jquery.themepunch.tools.min.js
+  - /assets/revolution/js/jquery.themepunch.revolution.min.js
