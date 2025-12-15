@@ -670,6 +670,19 @@ const selectedWork = selectedWorkSlugs
     scroll-snap-align: start;
   }
 
+  @media (max-width: 520px) {
+    .clients__logos {
+      scroll-snap-type: x mandatory;
+      padding-inline: calc(50vw - 110px);
+      scroll-padding-left: calc(50vw - 110px);
+      scroll-padding-right: calc(50vw - 110px);
+    }
+
+    .client-logo {
+      scroll-snap-align: center;
+    }
+  }
+
   .client-logo__img {
     display: block;
     width: 100%;
