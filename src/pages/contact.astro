@@ -1,0 +1,355 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<PageLayout title="Contact" description="Get in touch with Constellation Design. Let's discuss your project and explore how we can work together.">
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-hero__content" data-animate>
+        <h1 class="contact-hero__title">Let's Talk</h1>
+        <p class="contact-hero__lead lead">
+          Have a project in mind? I'd love to hear about it. Fill out the form below or reach out directly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact section">
+    <div class="container">
+      <div class="contact__grid">
+        <!-- Contact Form -->
+        <div class="contact__form-wrapper" data-animate>
+          <form 
+            class="contact-form" 
+            action="https://formspree.io/f/xjknakoa" 
+            method="POST"
+            data-contact-form
+          >
+            <div class="form-group">
+              <label for="name" class="form-label">Name <span class="required">*</span></label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="form-input" 
+                required 
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email <span class="required">*</span></label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-input" 
+                required 
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="company" class="form-label">Company</label>
+              <input 
+                type="text" 
+                id="company" 
+                name="company" 
+                class="form-input" 
+                autocomplete="organization"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="project-type" class="form-label">Project Type</label>
+              <select id="project-type" name="project-type" class="form-select">
+                <option value="">Select an option</option>
+                <option value="ux-design">UX Design</option>
+                <option value="creative-direction">Creative Direction</option>
+                <option value="product-strategy">Product Strategy</option>
+                <option value="workshop">Workshop</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message <span class="required">*</span></label>
+              <textarea 
+                id="message" 
+                name="message" 
+                class="form-textarea" 
+                rows="5" 
+                required
+                placeholder="Tell me about your project..."
+              ></textarea>
+            </div>
+
+            <div class="form-actions">
+              <Button type="submit" variant="primary" size="lg">Send Message</Button>
+            </div>
+
+            <div class="form-status" data-form-status aria-live="polite"></div>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact__info" data-animate>
+          <div class="contact-info-block">
+            <h2 class="contact-info-block__title">Direct Contact</h2>
+            <p class="contact-info-block__text">
+              Prefer to reach out directly? Send me an email and I'll get back to you within 24 hours.
+            </p>
+            <a href="mailto:hello@constellation.design" class="contact-info-block__link">
+              hello@constellation.design
+            </a>
+          </div>
+
+          <div class="contact-info-block">
+            <h2 class="contact-info-block__title">Location</h2>
+            <p class="contact-info-block__text">
+              Based in Amsterdam, Netherlands<br />
+              Available for remote collaboration worldwide
+            </p>
+          </div>
+
+          <div class="contact-info-block">
+            <h2 class="contact-info-block__title">Connect</h2>
+            <div class="contact-info-block__social">
+              <a href="https://www.linkedin.com/in/qaidjacobs/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* Contact Hero */
+  .contact-hero {
+    padding-top: calc(var(--space-32) + var(--space-16));
+    padding-bottom: var(--space-16);
+  }
+
+  .contact-hero__title {
+    font-size: clamp(var(--font-size-4xl), 8vw, var(--font-size-6xl));
+    margin-bottom: var(--space-6);
+  }
+
+  .contact-hero__lead {
+    max-width: 600px;
+  }
+
+  /* Contact Grid */
+  .contact__grid {
+    display: grid;
+    gap: var(--space-16);
+  }
+
+  /* Contact Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+  }
+
+  .required {
+    color: var(--color-accent);
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(232, 213, 181, 0.1);
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23A0A0A0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-4) center;
+    padding-right: var(--space-10);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  .form-actions {
+    margin-top: var(--space-4);
+  }
+
+  .form-status {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    display: none;
+  }
+
+  .form-status.is-success {
+    display: block;
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .form-status.is-error {
+    display: block;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  /* Contact Info */
+  .contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+  }
+
+  .contact-info-block__title {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+  }
+
+  .contact-info-block__text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-2);
+  }
+
+  .contact-info-block__link {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-accent);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-info-block__link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .contact-info-block__social {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .contact-info-block__social a {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-info-block__social a:hover {
+    color: var(--color-text-primary);
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .contact__grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--space-20);
+    }
+  }
+</style>
+
+<script>
+  // Form handling
+  const form = document.querySelector('[data-contact-form]') as HTMLFormElement;
+  const status = document.querySelector('[data-form-status]');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        status?.classList.remove('is-error');
+        status?.classList.add('is-success');
+        if (status) status.textContent = 'Thank you! Your message has been sent. I\'ll get back to you soon.';
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      status?.classList.remove('is-success');
+      status?.classList.add('is-error');
+      if (status) status.textContent = 'Something went wrong. Please try again or email me directly.';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send Message';
+    }
+  });
+
+  // Scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach(el => {
+    observer.observe(el);
+  });
+</script>

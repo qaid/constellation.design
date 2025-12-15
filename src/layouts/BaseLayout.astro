@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title, 
+  description = "Constellation Design is a creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam.",
+  image = "/og-image.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      (() => {
+        const storageKey = 'theme';
+        const validModes = new Set(['light', 'dark']);
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const notify = () => {
+          window.dispatchEvent(new Event('themechange'));
+        };
+
+        const getStoredMode = () => {
+          const raw = localStorage.getItem(storageKey);
+          if (raw === 'system') {
+            localStorage.removeItem(storageKey);
+            return null;
+          }
+
+          return raw && validModes.has(raw) ? raw : null;
+        };
+
+        const getSystemTheme = () => (mediaQuery.matches ? 'dark' : 'light');
+
+        const applyMode = (mode) => {
+          const resolved = mode ? mode : getSystemTheme();
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.dataset.themeMode = mode ? mode : 'system';
+          notify();
+          return resolved;
+        };
+
+        const setMode = (mode) => {
+          if (!validModes.has(mode)) return applyMode(getStoredMode());
+          localStorage.setItem(storageKey, mode);
+          return applyMode(mode);
+        };
+
+        const init = () => applyMode(getStoredMode());
+
+        window.__getThemeMode = () => getStoredMode() || 'system';
+        window.__setThemeMode = setMode;
+        window.__resolveThemeMode = applyMode;
+
+        init();
+
+        const onSystemChange = () => {
+          if (!getStoredMode()) applyMode(null);
+        };
+
+        if (typeof mediaQuery.addEventListener === 'function') {
+          mediaQuery.addEventListener('change', onSystemChange);
+        } else {
+          mediaQuery.addListener(onSystemChange);
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title} | Constellation Design</title>
+    <meta name="title" content={`${title} | Constellation Design`} />
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | Constellation Design`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${title} | Constellation Design`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <slot />
+    </div>
+  </body>
+</html>
