@@ -38,11 +38,11 @@
   --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-family-display: 'Syne', var(--font-family-primary);
   
-  --font-size-xs: 0.75rem;     /* 12px */
-  --font-size-sm: 0.875rem;    /* 14px */
-  --font-size-base: 1rem;      /* 16px */
-  --font-size-lg: 1.125rem;    /* 18px */
-  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-xs: 0.8125rem;   /* 13px */
+  --font-size-sm: 0.9375rem;   /* 15px */
+  --font-size-base: 1.0625rem; /* 17px */
+  --font-size-lg: 1.1875rem;   /* 19px */
+  --font-size-xl: 1.3125rem;   /* 21px */
   --font-size-2xl: 1.5rem;     /* 24px */
   --font-size-3xl: 2rem;       /* 32px */
   --font-size-4xl: 2.5rem;     /* 40px */
