@@ -174,8 +174,11 @@ const {
 
   .case-overview__content .case-callout {
     width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     margin-block: var(--space-10);
     padding-block: var(--space-10);
     background: var(--color-surface-elevated);
