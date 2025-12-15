@@ -1,0 +1,260 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<PageLayout title="About" description="Learn about Qa'id Jacobs and Constellation Design, a creative consultancy based in Amsterdam.">
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-hero__content" data-animate>
+        <h1 class="about-hero__title">About</h1>
+        <p class="about-hero__lead lead">
+          I'm <a href="https://qaidjacobs.com">Qa'id Jacobs</a>; a creativity engine based in Amsterdam. I've spent twenty-plus years designing for profit and for purpose, across music, marketing, travel, HR tech, sports analytics, and human rights. Six industries. Countless intersections. That range is the point. The winding path taught me to connect dots across sectors, disciplines, and worldviews—and to find what others miss. Endlessly curious. Detailed by practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="bio section">
+    <div class="container">
+      <div class="bio__grid">
+        <div class="bio__image" data-animate>
+          <img
+            class="bio__image-img"
+            src="/images/qaid-jacobs-portrait.jpeg"
+            alt="Qa'id Jacobs"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="bio__content" data-animate>
+          <h2>The Story</h2>
+          <p>
+            My first career was in music – marketing at major labels in New York, co-founding a production company, DJ'ing across the city. When that world shifted, I pivoted to design and never looked back.
+          </p>
+          <p>
+            Since then, I've worked with partners in the human rights space, travel, global marketing, HR tech, and sports analytics. I've designed products for profit and built tools for movements. I've led teams, mentored designers, and stood on stages telling stories about what this work means. Eventually, the path led me to Amsterdam, where I founded Constellation Design.
+          </p>
+          <p>
+            Along the way I learned that this winding path wasn't the detour, it's been <b>the method</b>. Each industry taught me something the others couldn't. Each sector sharpened a different instinct. Now I bring all of it to the table: the systems thinking, the cultural fluency, the belief that the best solutions come from connecting unexpected dots.
+          </p>  
+          <p>
+            I work with partners who want more than execution. They want a partner who sees the whole picture and isn't afraid to challenge assumptions to find what's actually possible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="values section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <h2>How I Work</h2>
+      </div>
+      <div class="values__grid" data-animate-stagger>
+        <div class="value-card">
+          <h3 class="value-card__title">Curiosity First</h3>
+          <p class="value-card__description">
+            Every project starts with questions. I dig deep to understand the context, constraints, and opportunities before jumping to solutions.
+          </p>
+        </div>
+        <div class="value-card">
+          <h3 class="value-card__title">Clarity Through Craft</h3>
+          <p class="value-card__description">
+            Good design makes complex things simple. I focus on clarity in both process and output, ensuring ideas are communicated effectively.
+          </p>
+        </div>
+        <div class="value-card">
+          <h3 class="value-card__title">Collaboration as Default</h3>
+          <p class="value-card__description">
+            The best work happens together. I partner closely with clients and their teams, bringing everyone along on the journey.
+          </p>
+        </div>
+        <div class="value-card">
+          <h3 class="value-card__title">Culture Matters</h3>
+          <p class="value-card__description">
+            Design doesn't exist in a vacuum. I consider cultural context and bring diverse perspectives to create work that resonates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section class="location section">
+    <div class="container">
+      <div class="location__content" data-animate>
+        <h2 class="location__title">Based in Amsterdam</h2>
+        <p class="location__text">
+          Working with clients across Europe and beyond. Available for remote collaboration and on-site workshops.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta section-lg">
+    <div class="container">
+      <div class="cta__content" data-animate>
+        <h2 class="cta__title">Let's work together</h2>
+        <p class="cta__text">Have a project in mind? I'd love to hear about it.</p>
+        <Button href="/contact" variant="primary" size="lg">Get in Touch</Button>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* About Hero */
+  .about-hero {
+    padding-top: calc(var(--space-32) + var(--space-16));
+    padding-bottom: var(--space-16);
+  }
+
+  .about-hero__title {
+    font-size: clamp(var(--font-size-4xl), 8vw, var(--font-size-6xl));
+    margin-bottom: var(--space-6);
+  }
+
+  .about-hero__lead {
+    max-width: 700px;
+  }
+
+  /* Bio Section */
+  .bio__grid {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .bio__image-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  .bio__content h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  .bio__content p {
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .bio__content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Values */
+  .values__grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .value-card {
+    padding: var(--space-8);
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .value-card__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+  }
+
+  .value-card__description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Location */
+  .location {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .location__content {
+    text-align: center;
+    max-width: 500px;
+    margin-inline: auto;
+  }
+
+  .location__title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .location__text {
+    color: var(--color-text-secondary);
+  }
+
+  /* CTA */
+  .cta__content {
+    text-align: center;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .cta__title {
+    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+    margin-bottom: var(--space-4);
+  }
+
+  .cta__text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+  }
+
+  /* Section Header */
+  .section-header {
+    margin-bottom: var(--space-10);
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .bio__grid {
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    .values__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .values__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach(el => {
+    observer.observe(el);
+  });
+</script>

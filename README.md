@@ -1,29 +1,43 @@
-# Constellation Design Website 
+# Astro Starter Kit: Minimal
 
-This website project supports the agency website for Constellation Design, a creative digital product consultancy.
-
-## Technologies & Resources
-The [Jekyll static site generator](https://jekyllrb.com) is at the heart of this project.
-
-The content, customization, and flavor has been added and implemented by me, Qa'id Jacobs, founder of Constellation Design.
-
-## Installation
-
-To run this project locally, first get Jekyll onto your system from the command line
-
-```bash
-~ $ gem install bundler jekyll 
+```sh
+bun create astro@latest -- --template minimal
 ```
 
-Navigate to the directory where this project's files are stored, then from the command line:
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-```bash
-~ $ bundle install
-~ $ bundle exec jekyll serve
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-## Contributing
-Pull requests, Issues, and any other suggestions for fixes or improvements are welcome.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

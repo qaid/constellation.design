@@ -1,0 +1,351 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Button from '../components/Button.astro';
+
+const services = [
+  {
+    id: 'ux-design',
+    title: 'UX Design',
+    description: 'User-centered design that balances business goals with human needs.',
+    details: [
+      'User research & insights',
+      'Information architecture',
+      'Wireframing & prototyping',
+      'Usability testing',
+      'Design systems',
+      'Interaction design'
+    ],
+    icon: `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <path d="M3 9h18"/>
+      <path d="M9 21V9"/>
+    </svg>`
+  },
+  {
+    id: 'creative-direction',
+    title: 'Creative Direction',
+    description: 'Visual storytelling that captures attention and communicates with clarity.',
+    details: [
+      'Brand strategy & identity',
+      'Visual design systems',
+      'Art direction',
+      'Campaign concepts',
+      'Content strategy',
+      'Design leadership'
+    ],
+    icon: `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+      <path d="M2 12h20"/>
+    </svg>`
+  },
+  {
+    id: 'product-strategy',
+    title: 'Product Strategy',
+    description: 'Strategic thinking that aligns product vision with market opportunity.',
+    details: [
+      'Product discovery',
+      'Market & competitor analysis',
+      'Roadmap planning',
+      'Feature prioritization',
+      'Go-to-market strategy',
+      'Stakeholder alignment'
+    ],
+    icon: `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+    </svg>`
+  },
+  {
+    id: 'workshops',
+    title: 'Workshops & Talks',
+    description: 'Interactive sessions that inspire teams and spark new perspectives.',
+    details: [
+      'Design thinking workshops',
+      'Team facilitation',
+      'Innovation sprints',
+      'Keynote presentations',
+      'Training & mentorship',
+      'Creative problem-solving'
+    ],
+    icon: `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>`
+  }
+];
+---
+
+<PageLayout title="Services" description="UX Design, Creative Direction, Product Strategy, and Workshops. Explore how Constellation Design can help your project.">
+  <!-- Hero Section -->
+  <section class="services-hero">
+    <div class="container">
+      <div class="services-hero__content" data-animate>
+        <h1 class="services-hero__title">Services</h1>
+        <p class="services-hero__lead lead">
+          From strategy to execution, I offer a range of services tailored to help you achieve your goals. Every engagement is customized to your specific needs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services List -->
+  <section class="services-list section">
+    <div class="container">
+      {services.map((service, index) => (
+        <article class="service-block" id={service.id} data-animate>
+          <div class="service-block__header">
+            <div class="service-block__icon" set:html={service.icon} />
+            <div class="service-block__intro">
+              <h2 class="service-block__title">{service.title}</h2>
+              <p class="service-block__description">{service.description}</p>
+            </div>
+          </div>
+          <div class="service-block__details">
+            <h3 class="service-block__details-title">What's included</h3>
+            <ul class="service-block__list">
+              {service.details.map(detail => (
+                <li>{detail}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <h2>How We'll Work Together</h2>
+      </div>
+      <div class="process__grid" data-animate-stagger>
+        <div class="process-step">
+          <span class="process-step__number">01</span>
+          <h3 class="process-step__title">Discovery</h3>
+          <p class="process-step__description">
+            We start with a conversation to understand your goals, challenges, and context. This helps me tailor the right approach.
+          </p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__number">02</span>
+          <h3 class="process-step__title">Proposal</h3>
+          <p class="process-step__description">
+            Based on our discussion, I'll put together a clear proposal outlining scope, timeline, and investment.
+          </p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__number">03</span>
+          <h3 class="process-step__title">Collaboration</h3>
+          <p class="process-step__description">
+            We work together closely, with regular check-ins and iterations to ensure we're on track.
+          </p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__number">04</span>
+          <h3 class="process-step__title">Delivery</h3>
+          <p class="process-step__description">
+            You receive polished deliverables along with documentation and support for implementation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta section-lg">
+    <div class="container">
+      <div class="cta__content" data-animate>
+        <h2 class="cta__title">Ready to get started?</h2>
+        <p class="cta__text">Let's discuss how I can help with your project.</p>
+        <Button href="/contact" variant="primary" size="lg">Start a Conversation</Button>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* Services Hero */
+  .services-hero {
+    padding-top: calc(var(--space-32) + var(--space-16));
+    padding-bottom: var(--space-16);
+  }
+
+  .services-hero__title {
+    font-size: clamp(var(--font-size-4xl), 8vw, var(--font-size-6xl));
+    margin-bottom: var(--space-6);
+  }
+
+  .services-hero__lead {
+    max-width: 700px;
+  }
+
+  /* Service Block */
+  .service-block {
+    display: grid;
+    gap: var(--space-8);
+    padding: var(--space-10) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .service-block:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .service-block__header {
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+  }
+
+  .service-block__icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .service-block__title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .service-block__description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+  }
+
+  .service-block__details-title {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+  }
+
+  .service-block__list {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .service-block__list li {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    padding-left: var(--space-4);
+    position: relative;
+  }
+
+  .service-block__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  /* Process */
+  .process {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .process__grid {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .process-step {
+    padding: var(--space-6);
+    background: var(--color-background);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .process-step__number {
+    display: inline-block;
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .process-step__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .process-step__description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Section Header */
+  .section-header {
+    margin-bottom: var(--space-10);
+  }
+
+  /* CTA */
+  .cta__content {
+    text-align: center;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .cta__title {
+    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+    margin-bottom: var(--space-4);
+  }
+
+  .cta__text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .service-block {
+      grid-template-columns: 1.5fr 1fr;
+      align-items: start;
+    }
+
+    .service-block__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .process__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach(el => {
+    observer.observe(el);
+  });
+</script>

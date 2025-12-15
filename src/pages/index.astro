@@ -1,0 +1,1000 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Button from '../components/Button.astro';
+import { getCollection } from 'astro:content';
+
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+type CollaboratorLogo = {
+  name: string;
+  src: string;
+};
+
+const publicRoot = new URL('../../public/', import.meta.url);
+const collaboratorsDir = new URL('./images/collaborators/black/png/', publicRoot);
+
+const humanizeFilename = (filename: string) =>
+  filename
+    .replace(/\.[^/.]+$/, '')
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const collaborators: CollaboratorLogo[] = fs
+  .readdirSync(fileURLToPath(collaboratorsDir), { withFileTypes: true })
+  .filter((entry) => entry.isFile())
+  .map((entry) => entry.name)
+  .filter((name) => /\.(png)$/i.test(name))
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+  .map((filename) => ({
+    name: humanizeFilename(filename),
+    src: `/images/collaborators/black/png/${filename}`,
+  }));
+
+const selectedWorkSlugs = ['the-wild', 'amplifon', 'the-usual-hotel'];
+const allProjects = await getCollection('projects', ({ data }) => !data.draft);
+const selectedWork = selectedWorkSlugs
+  .map((slug) => allProjects.find((project) => project.slug === slug))
+  .filter((project): project is NonNullable<typeof project> => Boolean(project))
+  .map((project) => ({
+    slug: project.slug,
+    title: project.data.title,
+    category: project.data.category,
+    featured: project.data.featured,
+    image: project.data.image,
+  }));
+---
+
+<PageLayout title="Home" description="Constellation Design is a creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam.">
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Constellation Background -->
+    <div class="hero__constellation" aria-hidden="true">
+      <!-- Stars arranged in sacred geometry patterns -->
+      <!-- Central triangle (pointing up) -->
+      <span class="star star--accent" data-star style="--x: 50%; --y: 25%; --size: 6px; --delay: 0s; --duration: 5s;"></span>
+      <span class="star" data-star style="--x: 35%; --y: 55%; --size: 5px; --delay: 1.2s; --duration: 4.3s;"></span>
+      <span class="star" data-star style="--x: 65%; --y: 55%; --size: 5px; --delay: 0.6s; --duration: 4.8s;"></span>
+      
+      <!-- Outer hexagon points -->
+      <span class="star star--electric" data-star style="--x: 50%; --y: 10%; --size: 4px; --delay: 0.4s; --duration: 5.5s;"></span>
+      <span class="star" data-star style="--x: 75%; --y: 25%; --size: 4px; --delay: 2.1s; --duration: 4.8s;"></span>
+      <span class="star star--purple" data-star style="--x: 75%; --y: 55%; --size: 4px; --delay: 0.8s; --duration: 5.2s;"></span>
+      <span class="star" data-star style="--x: 50%; --y: 70%; --size: 4px; --delay: 1.5s; --duration: 4.6s;"></span>
+      <span class="star star--electric" data-star style="--x: 25%; --y: 55%; --size: 4px; --delay: 2.4s; --duration: 5.1s;"></span>
+      <span class="star" data-star style="--x: 25%; --y: 25%; --size: 4px; --delay: 0.3s; --duration: 4.4s;"></span>
+      
+      <!-- Scattered ambient stars -->
+      <span class="star" data-star style="--x: 8%; --y: 15%; --size: 3px; --delay: 1.8s; --duration: 5.3s;"></span>
+      <span class="star star--purple" data-star style="--x: 92%; --y: 12%; --size: 3px; --delay: 0.6s; --duration: 4.7s;"></span>
+      <span class="star" data-star style="--x: 5%; --y: 45%; --size: 3px; --delay: 2.2s; --duration: 5.4s;"></span>
+      <span class="star" data-star style="--x: 95%; --y: 40%; --size: 3px; --delay: 1.1s; --duration: 4.2s;"></span>
+      <span class="star star--electric" data-star style="--x: 12%; --y: 78%; --size: 3px; --delay: 0.9s; --duration: 5.6s;"></span>
+      <span class="star" data-star style="--x: 88%; --y: 75%; --size: 3px; --delay: 2.6s; --duration: 4.5s;"></span>
+      <span class="star" data-star style="--x: 15%; --y: 92%; --size: 3px; --delay: 0.2s; --duration: 5.8s;"></span>
+      <span class="star star--purple" data-star style="--x: 85%; --y: 90%; --size: 3px; --delay: 1.4s; --duration: 4.9s;"></span>
+      <span class="star" data-star style="--x: 42%; --y: 88%; --size: 3px; --delay: 2.8s; --duration: 5.2s;"></span>
+      <span class="star" data-star style="--x: 58%; --y: 85%; --size: 3px; --delay: 0.7s; --duration: 4.1s;"></span>
+      <span class="star star--accent" data-star style="--x: 3%; --y: 65%; --size: 4px; --delay: 1.9s; --duration: 5.5s;"></span>
+      <span class="star" data-star style="--x: 97%; --y: 60%; --size: 4px; --delay: 0.5s; --duration: 4.3s;"></span>
+      
+      <!-- SVG for shooting pulses -->
+      <svg class="shooting-stars" data-shooting-stars viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+    </div>
+    
+    <div class="hero__container container">
+      <div class="hero__content" data-animate>
+        <h1 class="hero__title">
+          Connecting the dots with design, creativity, and culture.
+        </h1>
+        <p class="hero__subtitle">
+          Constellation Design is a creative consultancy driven by curiosity, led by Qa'id Jacobs, based in Amsterdam.
+        </p>
+        <div class="hero__actions">
+          <Button href="/work" variant="primary" size="lg">See the Work</Button>
+          <Button href="/contact" variant="secondary" size="lg">Get in Touch</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="intro section">
+    <div class="container">
+      <div class="intro__content" data-animate>
+        <p class="intro__text lead">
+          I've spent twenty-plus years crossing lines most designers don't ... between industries, between profit and purpose. Music, marketing, travel, HR tech, sports analytics, and human rights. Six sectors. Countless intersections. Constellation Design is a creativity engine: strategic thinking and creative direction that finds the through-line others miss.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work Section -->
+  <section class="featured-work section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <h2>Selected Work</h2>
+        <a href="/work" class="section-link">View all projects</a>
+      </div>
+      <div class="featured-work__grid" data-animate-stagger>
+        {selectedWork.map((project) => (
+          <a href={`/work/${project.slug}`} class={`project-card ${project.featured ? 'project-card--featured' : ''}`}>
+            <div class="project-card__image">
+              <div class="project-card__placeholder" aria-hidden="true"></div>
+              {project.image && (
+                <img
+                  class="project-card__img"
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__category">{project.category}</span>
+              <h3 class="project-card__title">{project.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <h2>How I Can Help</h2>
+        <a href="/services" class="section-link">Learn more</a>
+      </div>
+      <div class="services__grid" data-animate-stagger>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18"/>
+              <path d="M9 21V9"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">UX Design</h3>
+          <p class="service-card__description">User-centered design that balances business goals with human needs.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+              <path d="M2 12h20"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Creative Direction</h3>
+          <p class="service-card__description">Visual storytelling that captures attention and communicates with clarity.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Product Strategy</h3>
+          <p class="service-card__description">Strategic thinking that aligns product vision with market opportunity.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Workshops & Talks</h3>
+          <p class="service-card__description">Interactive sessions that inspire teams and spark new perspectives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients Section -->
+  <section class="clients section">
+    <div class="container">
+      <div class="clients__header" data-animate>
+        <h2 class="clients__title">Happy Collaborators</h2>
+      </div>
+      <div class="clients__logos-wrap" data-animate-stagger>
+        <div class="clients__fade clients__fade--left" aria-hidden="true" data-clients-fade-left hidden></div>
+        <div class="clients__fade clients__fade--right" aria-hidden="true" data-clients-fade-right hidden></div>
+
+        <button class="clients__nav clients__nav--prev" type="button" aria-label="Scroll collaborators left" data-clients-prev hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        <div class="clients__logos" data-clients-carousel tabindex="0" aria-label="Happy Collaborators logos">
+          {collaborators.map((client) => (
+            <div class="client-logo" aria-label={client.name}>
+              <img
+                src={client.src}
+                alt={client.name}
+                class="client-logo__img"
+                loading="lazy"
+                decoding="async"
+                data-collaborator-logo
+                data-logo-dark={client.src}
+                data-logo-light={client.src}
+              />
+            </div>
+          ))}
+        </div>
+
+        <button class="clients__nav clients__nav--next" type="button" aria-label="Scroll collaborators right" data-clients-next hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta section-lg">
+    <div class="container">
+      <div class="cta__content" data-animate>
+        <h2 class="cta__title">What are you dreaming up?</h2>
+        <p class="cta__text">Let's connect and explore how we can bring your vision to life.</p>
+        <Button href="/contact" variant="primary" size="lg">Start a Conversation</Button>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-16);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__container {
+    display: grid;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .hero__content {
+    max-width: 700px;
+  }
+
+  .hero__title {
+    font-size: clamp(var(--font-size-4xl), 8vw, var(--font-size-6xl));
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    max-width: 540px;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  /* Constellation Background */
+  .hero__constellation {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    /* Cosmic gradient background */
+    background: 
+      radial-gradient(ellipse at 20% 30%, var(--color-cosmic-purple) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 70%, var(--color-deep-indigo) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 20%, rgba(0, 153, 204, 0.15) 0%, transparent 35%);
+  }
+
+  :global([data-theme="light"]) .hero__constellation {
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(107, 45, 158, 0.18) 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 70%, rgba(0, 153, 204, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 60% 20%, rgba(232, 213, 181, 0.22) 0%, transparent 40%);
+  }
+
+  .star {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: var(--color-accent);
+    border-radius: 50%;
+    animation: twinkle var(--duration) ease-in-out infinite;
+    animation-delay: var(--delay);
+    box-shadow: 0 0 calc(var(--size) * 2) var(--color-accent);
+  }
+
+  :global([data-theme="light"]) .star {
+    opacity: 0.6;
+    animation-name: twinkleLight;
+    background: rgba(26, 10, 46, 0.35);
+    box-shadow: 0 0 calc(var(--size) * 1) rgba(26, 10, 46, 0.18);
+  }
+
+  /* Colored star variants */
+  .star--electric {
+    background: var(--color-electric-blue);
+    box-shadow: 0 0 calc(var(--size) * 2) var(--color-electric-blue);
+  }
+
+  :global([data-theme="light"]) .star--electric {
+    background: rgba(0, 153, 204, 0.65);
+    box-shadow: 0 0 calc(var(--size) * 1) rgba(0, 153, 204, 0.2);
+  }
+
+  .star--purple {
+    background: var(--color-cosmic-purple-light);
+    box-shadow: 0 0 calc(var(--size) * 2) var(--color-cosmic-purple-light);
+  }
+
+  :global([data-theme="light"]) .star--purple {
+    background: rgba(107, 45, 158, 0.55);
+    box-shadow: 0 0 calc(var(--size) * 1) rgba(107, 45, 158, 0.2);
+  }
+
+  .star--accent {
+    background: var(--color-accent);
+    box-shadow: 0 0 calc(var(--size) * 3) var(--color-accent);
+  }
+
+  :global([data-theme="light"]) .star--accent {
+    background: rgba(10, 10, 10, 0.5);
+    box-shadow: 0 0 calc(var(--size) * 1) rgba(10, 10, 10, 0.15);
+  }
+
+  /* Shooting stars SVG */
+  .shooting-stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { 
+      opacity: 0.25; 
+      transform: scale(1);
+      box-shadow: 0 0 calc(var(--size) * 1) currentColor;
+    }
+    50% { 
+      opacity: 0.9; 
+      transform: scale(1.2);
+      box-shadow: 0 0 calc(var(--size) * 2) currentColor;
+    }
+  }
+
+  @keyframes twinkleLight {
+    0%, 100% {
+      opacity: 0.25;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.15);
+    }
+  }
+
+  /* Star hit pulse animation */
+  .star--hit {
+    animation: starHit 0.6s ease-out forwards !important;
+  }
+
+  @keyframes starHit {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 4px var(--color-accent);
+    }
+    50% {
+      transform: scale(2.5);
+      opacity: 1;
+      box-shadow: 0 0 20px var(--color-accent), 0 0 40px var(--color-accent);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.9;
+      box-shadow: 0 0 calc(var(--size) * 2) var(--color-accent);
+    }
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Introduction */
+  .intro__content {
+    max-width: var(--container-content);
+  }
+
+  .intro__text {
+    font-size: clamp(var(--font-size-lg), 3vw, var(--font-size-2xl));
+  }
+
+  /* Section Header */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-10);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .section-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .section-link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  /* Featured Work */
+  .featured-work__grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .project-card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+
+  .project-card__image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .project-card__placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-surface-elevated) 0%, var(--color-surface) 100%);
+    transition: transform var(--transition-slow) var(--ease-out-expo);
+  }
+
+  .project-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow) var(--ease-out-expo);
+  }
+
+  .project-card:hover .project-card__placeholder {
+    transform: scale(1.03);
+  }
+
+  .project-card:hover .project-card__img {
+    transform: scale(1.03);
+  }
+
+  .project-card__content {
+    padding: var(--space-6);
+  }
+
+  .project-card__category {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+  }
+
+  :global([data-theme="light"]) .project-card__category {
+    color: var(--color-cosmic-purple);
+  }
+
+  .project-card__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* Services */
+  .services__grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .service-card {
+    padding: var(--space-8);
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--transition-base);
+  }
+
+  .service-card:hover {
+    border-color: var(--color-border-light);
+  }
+
+  .service-card__icon {
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .service-card__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .service-card__description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  /* Clients */
+  .clients__header {
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .clients__title {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
+  }
+
+  .clients__logos-wrap {
+    position: relative;
+  }
+
+  .clients__fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 64px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .clients__fade--left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-background) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  .clients__fade--right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-background) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  .clients__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    z-index: 2;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .clients__nav:hover {
+    transform: translateY(-50%) scale(1.03);
+  }
+
+  .clients__nav:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .clients__nav--prev {
+    left: 0;
+  }
+
+  .clients__nav--next {
+    right: 0;
+  }
+
+  .clients__logos {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--space-6);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 44px;
+    padding-inline: 44px;
+    padding-bottom: var(--space-2);
+    scrollbar-width: none;
+  }
+
+  .clients__logos:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  .clients__logos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .client-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 220px;
+    height: 104px;
+    padding: 10px 14px;
+    border-radius: var(--radius-full);
+    scroll-snap-align: start;
+  }
+
+  .client-logo__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.75;
+    transition: opacity var(--transition-fast);
+  }
+
+  :global([data-theme="dark"]) .client-logo__img {
+    filter: invert(1) brightness(1.05) contrast(1.05);
+  }
+
+  .client-logo:hover .client-logo__img {
+    opacity: 1;
+  }
+
+  /* CTA */
+  .cta {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cta__content {
+    text-align: center;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .cta__title {
+    font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+    margin-bottom: var(--space-4);
+  }
+
+  .cta__text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .featured-work__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card--featured {
+      grid-column: span 2;
+    }
+
+    .project-card--featured .project-card__image {
+      aspect-ratio: 21 / 9;
+    }
+
+    .services__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .clients__logos {
+      gap: var(--space-12);
+    }
+  }
+</style>
+
+<script>
+  // Scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Collaborator logos (theme-aware)
+  const collaboratorLogos = Array.from(
+    document.querySelectorAll<HTMLImageElement>('[data-collaborator-logo]')
+  );
+
+  const updateCollaboratorLogos = () => {
+    const theme = document.documentElement.dataset.theme || 'dark';
+    collaboratorLogos.forEach((logo) => {
+      const darkSrc = logo.getAttribute('data-logo-dark');
+      const lightSrc = logo.getAttribute('data-logo-light');
+      const nextSrc = theme === 'light' ? lightSrc : darkSrc;
+      if (nextSrc && logo.getAttribute('src') !== nextSrc) {
+        logo.setAttribute('src', nextSrc);
+      }
+    });
+  };
+
+  window.addEventListener('themechange', updateCollaboratorLogos);
+  updateCollaboratorLogos();
+
+  // Collaborators carousel navigation
+  const clientsCarousel = document.querySelector<HTMLElement>('[data-clients-carousel]');
+  const clientsPrev = document.querySelector<HTMLButtonElement>('[data-clients-prev]');
+  const clientsNext = document.querySelector<HTMLButtonElement>('[data-clients-next]');
+  const clientsFadeLeft = document.querySelector<HTMLElement>('[data-clients-fade-left]');
+  const clientsFadeRight = document.querySelector<HTMLElement>('[data-clients-fade-right]');
+
+  const updateClientsNav = () => {
+    if (!clientsCarousel || !clientsPrev || !clientsNext) return;
+    const hasOverflow = clientsCarousel.scrollWidth > clientsCarousel.clientWidth + 2;
+    if (!hasOverflow) {
+      clientsPrev.hidden = true;
+      clientsNext.hidden = true;
+      if (clientsFadeLeft) clientsFadeLeft.hidden = true;
+      if (clientsFadeRight) clientsFadeRight.hidden = true;
+      return;
+    }
+
+    const left = clientsCarousel.scrollLeft;
+    const maxLeft = clientsCarousel.scrollWidth - clientsCarousel.clientWidth;
+    clientsPrev.hidden = left <= 2;
+    clientsNext.hidden = left >= maxLeft - 2;
+
+    if (clientsFadeLeft) clientsFadeLeft.hidden = left <= 2;
+    if (clientsFadeRight) clientsFadeRight.hidden = left >= maxLeft - 2;
+  };
+
+  const scrollClientsBy = (direction: -1 | 1) => {
+    if (!clientsCarousel) return;
+    const amount = Math.max(200, Math.floor(clientsCarousel.clientWidth * 0.85));
+    clientsCarousel.scrollBy({ left: direction * amount, behavior: 'smooth' });
+  };
+
+  if (clientsPrev && clientsNext && clientsCarousel) {
+    clientsPrev.addEventListener('click', () => scrollClientsBy(-1));
+    clientsNext.addEventListener('click', () => scrollClientsBy(1));
+
+    clientsCarousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        scrollClientsBy(-1);
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        scrollClientsBy(1);
+      }
+    });
+
+    let raf = 0;
+    clientsCarousel.addEventListener('scroll', () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(updateClientsNav);
+    });
+
+    window.addEventListener('resize', updateClientsNav);
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(() => updateClientsNav());
+      ro.observe(clientsCarousel);
+    }
+
+    updateClientsNav();
+  }
+
+  // Shooting stars animation
+  (function initShootingStars() {
+    const svg = document.querySelector<SVGSVGElement>('[data-shooting-stars]');
+    const stars = Array.from(document.querySelectorAll<HTMLElement>('[data-star]'));
+    if (!svg || stars.length < 2) return;
+
+    const svgEl = svg;
+
+    // Get star positions as percentages
+    const starPositions = stars.map((star) => {
+      const style = star.style;
+      return {
+        x: parseFloat(style.getPropertyValue('--x')),
+        y: parseFloat(style.getPropertyValue('--y'))
+      };
+    });
+
+    // Find nearby stars for path creation
+    function findNearbyStars(startIndex: number, count: number): number[] {
+      const start = starPositions[startIndex];
+      const distances = starPositions
+        .map((pos, i) => ({
+          index: i,
+          dist: Math.hypot(pos.x - start.x, pos.y - start.y)
+        }))
+        .filter(d => d.index !== startIndex && d.dist > 5 && d.dist < 40)
+        .sort((a, b) => a.dist - b.dist);
+      
+      return distances.slice(0, count).map(d => d.index);
+    }
+
+    // Create a shooting star path
+    function createShootingPath(): { path: string; duration: number; starIndices: number[] } {
+      const startIdx = Math.floor(Math.random() * starPositions.length);
+      const pathStars = [startIdx, ...findNearbyStars(startIdx, 2 + Math.floor(Math.random() * 2))];
+      
+      if (pathStars.length < 2) {
+        // Fallback: just pick random stars
+        const shuffled = [...Array(starPositions.length).keys()].sort(() => Math.random() - 0.5);
+        pathStars.length = 0;
+        pathStars.push(...shuffled.slice(0, 3));
+      }
+
+      const points = pathStars.map(i => starPositions[i]);
+      const pathD = points.map((p, i) => 
+        `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`
+      ).join(' ');
+
+      return { 
+        path: pathD, 
+        duration: 4000 + Math.random() * 2000,
+        starIndices: pathStars
+      };
+    }
+    
+    // Pulse a star with the accent color
+    function pulseDestinationStar(starIndex: number) {
+      const star = stars[starIndex];
+      if (!star) return;
+      
+      star.classList.add('star--hit');
+      setTimeout(() => {
+        star.classList.remove('star--hit');
+      }, 600);
+    }
+
+    // Animate a single shooting star
+    function animateShootingStar(delay: number) {
+      setTimeout(() => {
+        const theme = document.documentElement.dataset.theme || 'dark';
+        const trailColor = theme === 'light' ? 'rgba(26, 10, 46, 0.7)' : '#E8D5B5';
+        const trailOpacity = theme === 'light' ? '0.55' : '0.25';
+        const trailStrokeWidth = theme === 'light' ? '0.4' : '0.25';
+
+        const { path, duration, starIndices } = createShootingPath();
+        const destinationStarIndex = starIndices[starIndices.length - 1];
+        const id = `shooting-${Date.now()}-${Math.random()}`;
+        
+        // Create gradient for the trail
+        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        gradient.setAttribute('id', id);
+        gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+        
+        const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop1.setAttribute('offset', '0%');
+        stop1.setAttribute('stop-color', trailColor);
+        stop1.setAttribute('stop-opacity', '0');
+        
+        const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop2.setAttribute('offset', '100%');
+        stop2.setAttribute('stop-color', trailColor);
+        stop2.setAttribute('stop-opacity', trailOpacity);
+        
+        gradient.appendChild(stop1);
+        gradient.appendChild(stop2);
+        defs.appendChild(gradient);
+        
+        // Create the path element
+        const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path') as SVGPathElement;
+        pathEl.setAttribute('d', path);
+        pathEl.setAttribute('fill', 'none');
+        pathEl.setAttribute('stroke', `url(#${id})`);
+        pathEl.setAttribute('stroke-width', trailStrokeWidth);
+        pathEl.setAttribute('stroke-linecap', 'round');
+        
+        const pathLength = pathEl.getTotalLength?.() || 100;
+        pathEl.style.strokeDasharray = `${pathLength}`;
+        pathEl.style.strokeDashoffset = `${pathLength}`;
+        pathEl.style.opacity = '0';
+        
+        svgEl.appendChild(defs);
+        svgEl.appendChild(pathEl);
+
+        // Animate the path
+        const startTime = performance.now();
+        
+        function animate(currentTime: number) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          
+          // Draw the line progressively
+          const drawLength = pathLength * eased;
+          const trailLength = pathLength * 0.3;
+          const trailStart = Math.max(0, drawLength - trailLength);
+          
+          pathEl.style.strokeDasharray = `${trailLength} ${pathLength}`;
+          pathEl.style.strokeDashoffset = `${pathLength - trailStart}`;
+          
+          // Fade in then out
+          if (progress < 0.1) {
+            pathEl.style.opacity = `${progress * 10}`;
+          } else if (progress > 0.7) {
+            pathEl.style.opacity = `${(1 - progress) / 0.3}`;
+          } else {
+            pathEl.style.opacity = '1';
+          }
+          
+          // Update gradient direction based on path
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            // Pulse the destination star
+            pulseDestinationStar(destinationStarIndex);
+            // Clean up
+            svgEl.removeChild(defs);
+            svgEl.removeChild(pathEl);
+            // Schedule next shooting star
+            animateShootingStar(3000 + Math.random() * 4000);
+          }
+        }
+        
+        requestAnimationFrame(animate);
+      }, delay);
+    }
+
+    // Start 3 shooting stars with staggered timing
+    animateShootingStar(1000);
+    animateShootingStar(4000);
+    animateShootingStar(7000);
+  })();
+</script>

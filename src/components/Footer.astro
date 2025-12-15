@@ -1,0 +1,218 @@
+---
+const currentYear = new Date().getFullYear();
+
+const navLinks = [
+  { href: '/work', label: 'Work' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const socialLinks = [
+  { href: 'https://www.linkedin.com/in/qaidjacobs/', label: 'LinkedIn', icon: 'linkedin' },
+];
+---
+
+<footer class="footer">
+  <div class="footer__container container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="Constellation Design - Home">
+          <img
+            src="/images/constellation-design-logo-wide-for-dark-theme.png"
+            alt=""
+            width="812"
+            height="369"
+            class="footer__logo-img"
+            data-footer-logo
+            data-logo-dark="/images/constellation-design-logo-wide-for-dark-theme.png"
+            data-logo-light="/images/constellation-design-logo-wide-for-light-theme.png"
+          />
+        </a>
+        <p class="footer__tagline">Connecting the dots with design, creativity, and culture.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <h3 class="footer__nav-title">Navigation</h3>
+        <ul class="footer__nav-list">
+          {navLinks.map(link => (
+            <li>
+              <a href={link.href} class="footer__nav-link">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h3 class="footer__nav-title">Get in Touch</h3>
+        <p class="footer__contact-text">
+          Based in Amsterdam, Netherlands<br />
+          Available for projects worldwide
+        </p>
+        <a href="/contact" class="footer__contact-link">Start a conversation</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        &copy; {currentYear} Constellation Design. All rights reserved.
+      </p>
+      <div class="footer__social">
+        {socialLinks.map(link => (
+          <a 
+            href={link.href} 
+            class="footer__social-link" 
+            aria-label={link.label}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-16);
+    margin-top: auto;
+  }
+
+  .footer__top {
+    display: grid;
+    gap: var(--space-10);
+    padding-bottom: var(--space-10);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .footer__brand {
+    width: 100%;
+  }
+
+  .footer__logo {
+    display: block;
+    width: 100%;
+    margin-bottom: var(--space-4);
+  }
+
+  .footer__logo-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .footer__logo:hover {
+    opacity: 0.9;
+  }
+
+  .footer__tagline {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .footer__nav-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer__nav-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+  }
+
+  .footer__nav-link:hover {
+    color: var(--color-text-primary);
+  }
+
+  .footer__contact-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .footer__contact-link {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-accent);
+    transition: color var(--transition-fast);
+  }
+
+  .footer__contact-link:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .footer__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-top: var(--space-6);
+  }
+
+  .footer__copyright {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+
+  .footer__social {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .footer__social-link {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+  }
+
+  .footer__social-link:hover {
+    color: var(--color-text-primary);
+  }
+
+  @media (min-width: 768px) {
+    .footer__top {
+      grid-template-columns: 1.5fr 1fr 1fr;
+    }
+
+    .footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+</style>
+
+<script>
+  const logo = document.querySelector('[data-footer-logo]');
+
+  const updateLogo = () => {
+    if (!(logo instanceof HTMLImageElement)) return;
+    const theme = document.documentElement.dataset.theme || 'dark';
+    const darkSrc = logo.getAttribute('data-logo-dark');
+    const lightSrc = logo.getAttribute('data-logo-light');
+    const nextSrc = theme === 'light' ? lightSrc : darkSrc;
+    if (nextSrc && logo.getAttribute('src') !== nextSrc) {
+      logo.setAttribute('src', nextSrc);
+    }
+  };
+
+  window.addEventListener('themechange', updateLogo);
+  updateLogo();
+</script>
