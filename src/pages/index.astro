@@ -286,6 +286,16 @@ const selectedWork = selectedWorkSlugs
     max-width: 540px;
   }
 
+  @media (min-width: 1024px) {
+    .hero__content {
+      max-width: none;
+    }
+
+    .hero__title {
+      max-width: none;
+    }
+  }
+
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
@@ -429,6 +439,7 @@ const selectedWork = selectedWorkSlugs
   /* Introduction */
   .intro__content {
     max-width: var(--container-content);
+    margin-inline: auto;
   }
 
   .intro__text {
@@ -657,6 +668,19 @@ const selectedWork = selectedWorkSlugs
     padding: 10px 14px;
     border-radius: var(--radius-full);
     scroll-snap-align: start;
+  }
+
+  @media (max-width: 520px) {
+    .clients__logos {
+      scroll-snap-type: x mandatory;
+      padding-inline: calc(50vw - 110px);
+      scroll-padding-left: calc(50vw - 110px);
+      scroll-padding-right: calc(50vw - 110px);
+    }
+
+    .client-logo {
+      scroll-snap-align: center;
+    }
   }
 
   .client-logo__img {
