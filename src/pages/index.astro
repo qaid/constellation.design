@@ -670,16 +670,28 @@ const selectedWork = selectedWorkSlugs
     scroll-snap-align: start;
   }
 
-  @media (max-width: 520px) {
+  @media (max-width: 768px) {
     .clients__logos {
       scroll-snap-type: x mandatory;
-      padding-inline: calc(50vw - 110px);
-      scroll-padding-left: calc(50vw - 110px);
-      scroll-padding-right: calc(50vw - 110px);
+      gap: 0;
+      padding: 0 44px var(--space-2);
+      scroll-padding: 44px;
     }
 
     .client-logo {
       scroll-snap-align: center;
+      scroll-snap-stop: always;
+      flex: 0 0 100%;
+      width: 100%;
+      padding-inline: 0;
+    }
+
+    .client-logo__img {
+      max-width: 220px;
+      margin-inline: auto;
+      width: auto;
+      height: auto;
+      max-height: 104px;
     }
   }
 
@@ -823,8 +835,30 @@ const selectedWork = selectedWorkSlugs
 
   const scrollClientsBy = (direction: -1 | 1) => {
     if (!clientsCarousel) return;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+      const slideWidth = clientsCarousel.clientWidth;
+      const current = clientsCarousel.scrollLeft;
+      const next = Math.round((current + direction * slideWidth) / slideWidth) * slideWidth;
+      clientsCarousel.scrollTo({ left: next, behavior: 'smooth' });
+      return;
+    }
+
     const amount = Math.max(200, Math.floor(clientsCarousel.clientWidth * 0.85));
     clientsCarousel.scrollBy({ left: direction * amount, behavior: 'smooth' });
+  };
+
+  const snapClientsToSlide = () => {
+    if (!clientsCarousel) return;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobile) return;
+    const slideWidth = clientsCarousel.clientWidth;
+    if (!slideWidth) return;
+    const current = clientsCarousel.scrollLeft;
+    const snapped = Math.round(current / slideWidth) * slideWidth;
+    if (Math.abs(snapped - current) > 1) {
+      clientsCarousel.scrollTo({ left: snapped, behavior: 'auto' });
+    }
   };
 
   if (clientsPrev && clientsNext && clientsCarousel) {
@@ -850,11 +884,15 @@ const selectedWork = selectedWorkSlugs
 
     window.addEventListener('resize', updateClientsNav);
     if ('ResizeObserver' in window) {
-      const ro = new ResizeObserver(() => updateClientsNav());
+      const ro = new ResizeObserver(() => {
+        updateClientsNav();
+        snapClientsToSlide();
+      });
       ro.observe(clientsCarousel);
     }
 
     updateClientsNav();
+    snapClientsToSlide();
   }
 
   // Shooting stars animation
