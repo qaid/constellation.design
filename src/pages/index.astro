@@ -384,6 +384,19 @@ const selectedWork = selectedWorkSlugs
     pointer-events: none;
   }
 
+  .shooting-stars__particle {
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    filter: drop-shadow(0 0 6px rgba(232, 213, 181, 0.85));
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+  }
+
+  :global([data-theme="light"]) .shooting-stars__particle {
+    filter: drop-shadow(0 0 4px rgba(26, 10, 46, 0.55));
+    mix-blend-mode: multiply;
+  }
+
   @keyframes twinkle {
     0%, 100% { 
       opacity: 0.25; 
@@ -902,6 +915,12 @@ const selectedWork = selectedWorkSlugs
     if (!svg || stars.length < 2) return;
 
     const svgEl = svg;
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    const PARTICLE_COUNT = 10;
+    const PATH_SAMPLE_DELTA = 0.35;
+    const ARRIVAL_FADE_BUFFER = 0.01;
+    const MAX_CONCURRENT_STREAMS = 2;
+    let activeStreams = 0;
 
     // Get star positions as percentages
     const starPositions = stars.map((star) => {
@@ -929,23 +948,21 @@ const selectedWork = selectedWorkSlugs
     // Create a shooting star path
     function createShootingPath(): { path: string; duration: number; starIndices: number[] } {
       const startIdx = Math.floor(Math.random() * starPositions.length);
-      const pathStars = [startIdx, ...findNearbyStars(startIdx, 2 + Math.floor(Math.random() * 2))];
-      
-      if (pathStars.length < 2) {
-        // Fallback: just pick random stars
-        const shuffled = [...Array(starPositions.length).keys()].sort(() => Math.random() - 0.5);
-        pathStars.length = 0;
-        pathStars.push(...shuffled.slice(0, 3));
+      const nearby = findNearbyStars(startIdx, 3);
+      let nextIdx = nearby.length ? nearby[Math.floor(Math.random() * nearby.length)] : -1;
+      if (nextIdx === -1 || nextIdx === startIdx) {
+        const fallback = Math.floor(Math.random() * starPositions.length);
+        nextIdx = fallback === startIdx ? (fallback + 1) % starPositions.length : fallback;
       }
-
+      const pathStars = [startIdx, nextIdx];
       const points = pathStars.map(i => starPositions[i]);
       const pathD = points.map((p, i) => 
         `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`
       ).join(' ');
 
-      return { 
-        path: pathD, 
-        duration: 4000 + Math.random() * 2000,
+      return {
+        path: pathD,
+        duration: 3600 + Math.random() * 1400,
         starIndices: pathStars
       };
     }
@@ -964,79 +981,158 @@ const selectedWork = selectedWorkSlugs
     // Animate a single shooting star
     function animateShootingStar(delay: number) {
       setTimeout(() => {
+        if (activeStreams >= MAX_CONCURRENT_STREAMS) {
+          animateShootingStar(300);
+          return;
+        }
+        activeStreams++;
+
         const theme = document.documentElement.dataset.theme || 'dark';
-        const trailColor = theme === 'light' ? 'rgba(26, 10, 46, 0.7)' : '#E8D5B5';
-        const trailOpacity = theme === 'light' ? '0.55' : '0.25';
-        const trailStrokeWidth = theme === 'light' ? '0.4' : '0.25';
+        const particleCore = theme === 'light' ? 'rgba(26, 10, 46, 0.9)' : '#E8D5B5';
+        const particleHalo = theme === 'light' ? 'rgba(26, 10, 46, 0.18)' : 'rgba(232, 213, 181, 0.25)';
 
         const { path, duration, starIndices } = createShootingPath();
         const destinationStarIndex = starIndices[starIndices.length - 1];
         const id = `shooting-${Date.now()}-${Math.random()}`;
+        const gradientId = `${id}-particles`;
         
-        // Create gradient for the trail
-        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-        const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
-        gradient.setAttribute('id', id);
-        gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+        const defs = document.createElementNS(SVG_NS, 'defs');
+        const particleGradient = document.createElementNS(SVG_NS, 'radialGradient');
+        particleGradient.setAttribute('id', gradientId);
+        particleGradient.setAttribute('cx', '0.5');
+        particleGradient.setAttribute('cy', '0.5');
+        particleGradient.setAttribute('r', '0.65');
         
-        const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-        stop1.setAttribute('offset', '0%');
-        stop1.setAttribute('stop-color', trailColor);
-        stop1.setAttribute('stop-opacity', '0');
+        const particleStopInner = document.createElementNS(SVG_NS, 'stop');
+        particleStopInner.setAttribute('offset', '0%');
+        particleStopInner.setAttribute('stop-color', particleCore);
+        particleStopInner.setAttribute('stop-opacity', '1');
         
-        const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-        stop2.setAttribute('offset', '100%');
-        stop2.setAttribute('stop-color', trailColor);
-        stop2.setAttribute('stop-opacity', trailOpacity);
+        const particleStopMid = document.createElementNS(SVG_NS, 'stop');
+        particleStopMid.setAttribute('offset', '70%');
+        particleStopMid.setAttribute('stop-color', particleCore);
+        particleStopMid.setAttribute('stop-opacity', '0.35');
         
-        gradient.appendChild(stop1);
-        gradient.appendChild(stop2);
-        defs.appendChild(gradient);
+        const particleStopOuter = document.createElementNS(SVG_NS, 'stop');
+        particleStopOuter.setAttribute('offset', '100%');
+        particleStopOuter.setAttribute('stop-color', particleHalo);
+        particleStopOuter.setAttribute('stop-opacity', '0');
         
-        // Create the path element
-        const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path') as SVGPathElement;
+        particleGradient.appendChild(particleStopInner);
+        particleGradient.appendChild(particleStopMid);
+        particleGradient.appendChild(particleStopOuter);
+        defs.appendChild(particleGradient);
+        
+        const pathEl = document.createElementNS(SVG_NS, 'path') as SVGPathElement;
         pathEl.setAttribute('d', path);
         pathEl.setAttribute('fill', 'none');
-        pathEl.setAttribute('stroke', `url(#${id})`);
-        pathEl.setAttribute('stroke-width', trailStrokeWidth);
-        pathEl.setAttribute('stroke-linecap', 'round');
-        
-        const pathLength = pathEl.getTotalLength?.() || 100;
-        pathEl.style.strokeDasharray = `${pathLength}`;
-        pathEl.style.strokeDashoffset = `${pathLength}`;
-        pathEl.style.opacity = '0';
+        pathEl.setAttribute('stroke', 'none');
+        pathEl.style.visibility = 'hidden';
+        pathEl.style.pointerEvents = 'none';
         
         svgEl.appendChild(defs);
         svgEl.appendChild(pathEl);
+        
+        const particleGroup = document.createElementNS(SVG_NS, 'g');
+        particleGroup.style.opacity = '0';
+        svgEl.appendChild(particleGroup);
+
+        const viewBoxWidth = svgEl.viewBox.baseVal?.width || 100;
+        const pxPerUnit = (svgEl.clientWidth || 100) / viewBoxWidth || 1;
+        const pxToUnit = 1 / pxPerUnit;
+
+        const particles = Array.from({ length: PARTICLE_COUNT }, () => {
+          const circle = document.createElementNS(SVG_NS, 'circle');
+          circle.classList.add('shooting-stars__particle');
+          circle.setAttribute('fill', `url(#${gradientId})`);
+          particleGroup.appendChild(circle);
+          return {
+            el: circle,
+            baseRadiusPx: 1 + Math.random(),
+            phase: Math.random() * Math.PI * 2,
+            offset: Math.random() * 0.2,
+            wobble: 0.6 + Math.random() * 0.8,
+            spawnDelay: 200 + Math.random() * 200,
+            travelDuration: duration * (0.75 + Math.random() * 0.2),
+            fadeDuration: 350 + Math.random() * 200
+          };
+        });
+
+        const pathLength = pathEl.getTotalLength?.() || 0;
+        if (!pathLength) {
+          svgEl.removeChild(defs);
+          svgEl.removeChild(pathEl);
+          svgEl.removeChild(particleGroup);
+          activeStreams = Math.max(0, activeStreams - 1);
+          animateShootingStar(3000 + Math.random() * 4000);
+          return;
+        }
+
+        const totalDuration =
+          particles.reduce((max, particle, index) => {
+            const delayOffset = index * (duration * 0.08);
+            particle.spawnDelay += delayOffset;
+            return Math.max(max, particle.spawnDelay + particle.travelDuration + particle.fadeDuration);
+          }, 0) + 200;
 
         // Animate the path
         const startTime = performance.now();
         
         function animate(currentTime: number) {
           const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
+          const progress = Math.min(elapsed / totalDuration, 1);
+          const fadeStart = Math.max(0, 1 - ARRIVAL_FADE_BUFFER);
           
-          // Ease out cubic
-          const eased = 1 - Math.pow(1 - progress, 3);
-          
-          // Draw the line progressively
-          const drawLength = pathLength * eased;
-          const trailLength = pathLength * 0.3;
-          const trailStart = Math.max(0, drawLength - trailLength);
-          
-          pathEl.style.strokeDasharray = `${trailLength} ${pathLength}`;
-          pathEl.style.strokeDashoffset = `${pathLength - trailStart}`;
-          
-          // Fade in then out
-          if (progress < 0.1) {
-            pathEl.style.opacity = `${progress * 10}`;
-          } else if (progress > 0.7) {
-            pathEl.style.opacity = `${(1 - progress) / 0.3}`;
-          } else {
-            pathEl.style.opacity = '1';
-          }
-          
-          // Update gradient direction based on path
+          // Ease out cubic for group fade
+          const groupEaseIn = elapsed < 600 ? elapsed / 600 : 1;
+          const groupEaseOut = elapsed > totalDuration - 600
+            ? Math.max(0, (totalDuration - elapsed) / 600)
+            : 1;
+          const groupOpacity = Math.min(groupEaseIn, groupEaseOut);
+          particleGroup.style.opacity = groupOpacity.toString();
+
+          particles.forEach((particle) => {
+            const localTime = elapsed - particle.spawnDelay;
+            if (localTime <= 0) {
+              particle.el.style.opacity = '0';
+              return;
+            }
+
+            const travelProgress = Math.min(localTime / particle.travelDuration, 1);
+            const cappedProgress = Math.min(travelProgress, fadeStart);
+            const pathPos = Math.max(0, Math.min(pathLength, cappedProgress * pathLength));
+            const pos = pathEl.getPointAtLength(pathPos);
+
+            const ahead = pathEl.getPointAtLength(Math.min(pathLength, pathPos + PATH_SAMPLE_DELTA));
+            const normalX = ahead.y - pos.y;
+            const normalY = -(ahead.x - pos.x);
+            const normalLength = Math.hypot(normalX, normalY) || 1;
+            const wobbleAmt = Math.sin((elapsed * 0.003) + particle.phase) * particle.wobble;
+            const cx = pos.x + (normalX / normalLength) * wobbleAmt;
+            const cy = pos.y + (normalY / normalLength) * wobbleAmt;
+
+            const radiusPx = particle.baseRadiusPx * (0.9 + Math.sin(elapsed * 0.004 + particle.phase) * 0.12);
+            const radiusUnits = Math.max(1, Math.min(2, radiusPx)) * pxToUnit;
+            particle.el.setAttribute('r', radiusUnits.toFixed(3));
+
+            particle.el.setAttribute('cx', cx.toFixed(2));
+            particle.el.setAttribute('cy', cy.toFixed(2));
+
+            if (travelProgress >= fadeStart) {
+              const fadeRatio = Math.min(1, (travelProgress - fadeStart) / ARRIVAL_FADE_BUFFER);
+              const fadeOpacity = Math.max(0, 1 - fadeRatio);
+              particle.el.style.opacity = (fadeOpacity * groupOpacity).toString();
+              if (fadeRatio >= 1) {
+                particle.el.style.opacity = '0';
+              }
+              return;
+            }
+
+            const distanceAhead = 1 - travelProgress;
+            const opacity = 0.35 + (1 - distanceAhead) * 0.4;
+            particle.el.style.opacity = (opacity * groupOpacity).toString();
+          });
+
           if (progress < 1) {
             requestAnimationFrame(animate);
           } else {
@@ -1045,6 +1141,8 @@ const selectedWork = selectedWorkSlugs
             // Clean up
             svgEl.removeChild(defs);
             svgEl.removeChild(pathEl);
+            svgEl.removeChild(particleGroup);
+            activeStreams = Math.max(0, activeStreams - 1);
             // Schedule next shooting star
             animateShootingStar(3000 + Math.random() * 4000);
           }

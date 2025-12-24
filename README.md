@@ -1,14 +1,10 @@
-# Astro Starter Kit: Minimal
+# Constellation Design 2025
 
-```sh
-bun create astro@latest -- --template minimal
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This project is a bespoke marketing site for **Constellation Design**, a creative consultancy led by Qa’id Jacobs in Amsterdam. The hero section renders a procedural constellation with multi-theme styling, water-like particle streams, and call-to-action copy. Down the page you’ll find long-form storytelling, featured work, and client marquees—all tuned for Astro’s hybrid rendering and animated with vanilla TypeScript.
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+The repo follows a lean Astro layout so design explorations stay focused on the single-page experience:
 
 ```text
 /
@@ -19,25 +15,24 @@ Inside of your Astro project, you'll see the following folders and files:
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+- `src/pages/index.astro` houses the hero constellation, sections, and inline scripts (particle streams, client carousel).  
+- `src/components/` is available for extracted UI pieces if the page expands.  
+- Static assets (logos, textures, fonts) live under `public/`.
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the project root:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `bun install`       | Installs dependencies                            |
+| `bun dev`           | Starts local dev server at `localhost:4321`      |
+| `bun build`         | Builds the production site to `./dist/`          |
+| `bun preview`       | Serves the production build locally              |
+| `bun astro ...`     | Run CLI helpers like `astro add`, `astro check`  |
+| `bun astro -- --help` | Astro CLI reference                           |
 
-## 👀 Want to learn more?
+## 📚 Additional context
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Astro documentation: https://docs.astro.build  
+- Design system and animation notes live directly in `index.astro` comments for quick iteration.
