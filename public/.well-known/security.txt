@@ -1,0 +1,5 @@
+Contact: mailto:studio@constellation.design
+Expires: 2027-03-12T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://constellation.design/.well-known/security.txt
+Policy: https://constellation.design/.well-known/security.txt

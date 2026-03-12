@@ -30,6 +30,26 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: TypeScript check
+        run: bunx astro check
+
+      - name: Check for draft content
+        run: |
+          FAILED=0
+          for file in src/content/projects/*.md; do
+            if grep -q "^draft: true" "$file"; then
+              slug=$(basename "$file" .md)
+              if [ -d "dist/work/$slug" ]; then
+                echo "ERROR: Draft content '$slug' found in build output"
+                FAILED=1
+              fi
+            fi
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            exit 1
+          fi
+          echo "Draft content check passed"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
