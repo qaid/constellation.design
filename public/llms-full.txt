@@ -1,0 +1,114 @@
+# Constellation Design — Full Site Content
+
+> This file contains the complete text content of constellation.design for LLM ingestion.
+> Last updated: 2026-03-12
+
+---
+
+## Home
+
+**Constellation Design** is a creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam.
+
+The studio partners with brands to create meaningful digital experiences rooted in research, storytelling, and craft.
+
+### Selected Work
+
+**The Wild** — Creative Direction, 2024
+Visual exploration and promotional design for The Wild Pop-up Bookstore.
+https://constellation.design/work/the-wild
+
+**Amplifon's Audiologist Dashboard** — UX Design, 2023
+Optimising the flows and dashboards used by audiologists to assess walk-in patients.
+https://constellation.design/work/amplifon
+
+**The Usual Hotel's User Experience** — UX Design, 2023
+Establishing an experience that takes hotel guests from booking online to checking in.
+https://constellation.design/work/the-usual-hotel
+
+---
+
+## About
+
+Constellation Design is a creative consultancy led by **Qa'id Jacobs**, a designer and creative director based in Amsterdam, Netherlands.
+
+The studio brings a considered, process-led approach to every engagement. Work spans UX design, creative direction, product strategy, and facilitated workshops — often combining multiple disciplines on a single project.
+
+The name Constellation Design reflects how ideas and people connect: individual points of light that, when seen together, form something larger and more meaningful.
+
+---
+
+## Services
+
+### UX Design
+Research-grounded interface and experience design. From discovery and mapping through to wireframes, prototypes, and design systems.
+
+### Creative Direction
+Visual identity, art direction, and brand expression. Shaping how a brand looks, sounds, and feels across digital and physical touchpoints.
+
+### Product Strategy
+Helping teams define what to build and why. Facilitated workshops, opportunity mapping, roadmap planning, and strategic framing.
+
+### Workshops
+Tailored working sessions for teams and organisations. Formats include design sprints, discovery workshops, brand definition, and team alignment.
+
+---
+
+## Work
+
+### The Wild
+**Category:** Creative Direction
+**Client:** The Wild
+**Role:** Creative Direction
+**Year:** 2024
+**Industry:** Publishing & Community
+
+Visual exploration and promotional design for The Wild Pop-up Bookstore.
+
+The Wild is a community pop-up bookstore concept celebrating independent publishing, marginalised voices, and the joy of reading. The project involved developing a visual language that felt alive, community-driven, and rooted in literary culture.
+
+https://constellation.design/work/the-wild
+
+---
+
+### Amplifon's Audiologist Dashboard
+**Category:** UX Design
+**Client:** Amplifon
+**Role:** Design Lead
+**Year:** 2023
+**Industry:** Healthcare
+
+Optimising the flows and dashboards used by audiologists to assess walk-in patients.
+
+Amplifon is a global leader in hearing care. This project focused on redesigning the internal dashboard used by audiologists during patient consultations — reducing friction, improving information hierarchy, and supporting faster clinical decisions.
+
+https://constellation.design/work/amplifon
+
+---
+
+### The Usual Hotel's User Experience
+**Category:** UX Design
+**Client:** The Usual Hotel
+**Role:** UX Design Lead
+**Year:** 2023
+**Industry:** Hospitality
+
+Establishing an experience that takes hotel guests from booking online to checking in.
+
+The Usual Hotel is a boutique hotel concept with a focus on simplicity and warmth. This engagement covered the full digital guest journey — from discovery and booking through to on-property digital touchpoints and check-in flows.
+
+https://constellation.design/work/the-usual-hotel
+
+---
+
+## Contact
+
+Constellation Design is based in Amsterdam, Netherlands.
+
+For project enquiries, collaborations, and workshop bookings:
+https://constellation.design/contact
+
+---
+
+*Constellation Design — constellation.design*
+*Studio based in Amsterdam, Netherlands*
+*Led by Qa'id Jacobs*

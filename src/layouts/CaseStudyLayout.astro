@@ -17,9 +17,9 @@ interface Props {
   nextProject?: { slug: string; title: string };
 }
 
-const { 
-  title, 
-  description, 
+const {
+  title,
+  description,
   category,
   client,
   role,
@@ -29,9 +29,23 @@ const {
   prevProject,
   nextProject
 } = Astro.props;
+
+const caseStudyJsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": title,
+  "description": description,
+  "creator": {
+    "@type": "Person",
+    "name": "Qa'id Jacobs"
+  },
+  ...(client && { "publisher": { "@type": "Organization", "name": client } }),
+  ...(year && { "dateCreated": year }),
+  ...(industry && { "genre": industry })
+};
 ---
 
-<BaseLayout title={title} description={description} image={image}>
+<BaseLayout title={title} description={description} image={image} jsonLd={caseStudyJsonLd}>
   <Header />
   <main>
     <!-- Hero -->

@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: false
+  commands:
+    typecheck:
+      run: bunx astro check
+      fail_text: "TypeScript/Astro check failed — fix type errors before committing"
+    build-verify:
+      run: bun run build
+      fail_text: "Build failed — ensure the site builds cleanly before committing"

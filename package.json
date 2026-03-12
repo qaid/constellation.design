@@ -11,5 +11,8 @@
   },
   "dependencies": {
     "astro": "^5.16.4"
+  },
+  "devDependencies": {
+    "lefthook": "^1.9.0"
   }
 }
