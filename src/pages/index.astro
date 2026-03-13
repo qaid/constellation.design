@@ -32,12 +32,12 @@ const collaborators: CollaboratorLogo[] = fs
     src: `/images/collaborators/black/png/${filename}`,
   }));
 
-const mosaicLayout: { slug: string; size: 'lg' | 'md' | 'sm' }[] = [
+const mosaicLayout: { slug: string; size: 'lg' | 'md' | 'sm' | 'tall' }[] = [
   { slug: 'the-wild', size: 'lg' },
   { slug: 'african-puzzle', size: 'md' },
-  { slug: 'look-ma-no-hands', size: 'sm' },
-  { slug: 'scopematch', size: 'sm' },
-  { slug: 'the-usual-hotel', size: 'lg' },
+  { slug: 'look-ma-no-hands', size: 'md' },
+  { slug: 'the-usual-hotel', size: 'tall' },
+  { slug: 'scopematch', size: 'md' },
 ];
 const allProjects = await getCollection('projects', ({ data }) => !data.draft);
 const selectedWork = mosaicLayout
@@ -799,6 +799,18 @@ const selectedWork = mosaicLayout
 
     .project-card--sm .project-card__image {
       aspect-ratio: 3 / 2;
+    }
+
+    .project-card--tall {
+      grid-column: span 7;
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card--tall .project-card__image {
+      aspect-ratio: auto;
+      flex: 1;
     }
 
     .services__grid {
