@@ -13,6 +13,7 @@ const projectsCollection = defineCollection({
     featured: z.boolean().default(false),
     order: z.number().default(0),
     image: z.string().optional(),
+    imageFit: z.enum(['cover', 'contain']).default('cover'),
     draft: z.boolean().default(false),
   }),
 });

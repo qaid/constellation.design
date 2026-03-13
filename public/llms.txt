@@ -1,25 +1,29 @@
 # Constellation Design
 
-> Creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam. Specialising in UX Design, Creative Direction, Product Strategy, and Workshops.
+> Creative consultancy and product studio driven by curiosity, led by Qa'id Jacobs from Amsterdam. Specialising in UX Design, Creative Direction, Product Strategy, and Workshops — and building products independently.
 
-Constellation Design partners with brands to create meaningful digital experiences rooted in research, storytelling, and craft. The studio brings a considered, process-led approach to every engagement — from early strategy through to final execution.
+Constellation Design partners with brands to create meaningful digital experiences rooted in research, storytelling, and craft. Beyond client work, the studio designs and builds its own tools and platforms. The practice brings a considered, process-led approach to every engagement — from early strategy through to final execution.
 
 ## Pages
 
-- [About](https://constellation.design/about): Background on the consultancy and Qa'id Jacobs — designer, creative director, and strategist based in Amsterdam.
+- [About](https://constellation.design/about): Background on the consultancy and Qa'id Jacobs — designer, creative director, strategist, and product builder based in Amsterdam.
 - [Services](https://constellation.design/services): UX Design, Creative Direction, Product Strategy, and Workshops — how the studio works and what it offers.
-- [Work](https://constellation.design/work): Portfolio of selected case studies across design, creative direction, and strategy.
+- [Work](https://constellation.design/work): Portfolio of selected case studies across design, creative direction, product strategy, and independent products.
 - [Contact](https://constellation.design/contact): Get in touch for collaborations, project enquiries, and workshop bookings.
 
 ## Case Studies
 
 - [The Wild](https://constellation.design/work/the-wild): Visual exploration and promotional design for The Wild Pop-up Bookstore.
+- [African Puzzle](https://constellation.design/work/african-puzzle): Design leadership and product ownership for a personal assistant app serving artisans, creatives, and entrepreneurs across 70 countries.
+- [Look Ma, No Hands](https://constellation.design/work/look-ma-no-hands): A macOS voice dictation and meeting transcription app. 100% local, privacy-first, built with WhisperKit and Core ML.
+- [ScopeMatch](https://constellation.design/work/scopematch): A pan-European directory of ISO 17025 accredited testing laboratories. 13,700+ labs across 6 countries with AI-powered search.
 - [Amplifon](https://constellation.design/work/amplifon): Optimising the flows and dashboards used by audiologists to assess walk-in patients.
 - [The Usual Hotel](https://constellation.design/work/the-usual-hotel): Establishing an experience that takes hotel guests from booking online to checking in.
+- [Spook](https://constellation.design/work/spook): A lightweight macOS network traffic monitor with per-app breakdown, connection details, and traffic history.
 
 ## About the Studio
 
-Constellation Design is led by Qa'id Jacobs, a designer and creative director with a background spanning UX, brand identity, and product strategy. The studio is based in Amsterdam, Netherlands.
+Constellation Design is led by Qa'id Jacobs, a designer, creative director, and product builder with a background spanning UX, brand identity, product strategy, and independent product development. The studio is based in Amsterdam, Netherlands.
 
 ## Contact
 

@@ -32,18 +32,30 @@ const collaborators: CollaboratorLogo[] = fs
     src: `/images/collaborators/black/png/${filename}`,
   }));
 
-const selectedWorkSlugs = ['the-wild', 'amplifon', 'the-usual-hotel'];
+const mosaicLayout: { slug: string; size: 'lg' | 'md' | 'sm' }[] = [
+  { slug: 'the-wild', size: 'lg' },
+  { slug: 'african-puzzle', size: 'md' },
+  { slug: 'look-ma-no-hands', size: 'sm' },
+  { slug: 'scopematch', size: 'sm' },
+  { slug: 'amplifon', size: 'sm' },
+  { slug: 'spook', size: 'md' },
+  { slug: 'the-usual-hotel', size: 'lg' },
+];
 const allProjects = await getCollection('projects', ({ data }) => !data.draft);
-const selectedWork = selectedWorkSlugs
-  .map((slug) => allProjects.find((project) => project.slug === slug))
-  .filter((project): project is NonNullable<typeof project> => Boolean(project))
-  .map((project) => ({
-    slug: project.slug,
-    title: project.data.title,
-    category: project.data.category,
-    featured: project.data.featured,
-    image: project.data.image,
-  }));
+const selectedWork = mosaicLayout
+  .map(({ slug, size }) => {
+    const project = allProjects.find((p) => p.slug === slug);
+    if (!project) return null;
+    return {
+      slug: project.slug,
+      title: project.data.title,
+      description: project.data.description,
+      category: project.data.category,
+      image: project.data.image,
+      size,
+    };
+  })
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
 ---
 
 <PageLayout title="Home" description="Constellation Design is a creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam.">
@@ -104,7 +116,7 @@ const selectedWork = selectedWorkSlugs
     <div class="container">
       <div class="intro__content" data-animate>
         <p class="intro__text lead">
-          I've spent twenty-plus years crossing lines most designers don't ... between industries, between profit and purpose. Music, marketing, travel, HR tech, sports analytics, and human rights. Six sectors. Countless intersections. Constellation Design is a creativity engine: strategic thinking and creative direction that finds the through-line others miss.
+          I've spent twenty-plus years crossing lines most designers don't ... between industries, between profit and purpose, between designing for clients and building products of my own. Music, marketing, travel, HR tech, sports analytics, human rights — and now, the tools and platforms I wished existed. Constellation Design is a creativity engine: strategic thinking, creative direction, and hands-on building that finds the through-line others miss.
         </p>
       </div>
     </div>
@@ -119,7 +131,7 @@ const selectedWork = selectedWorkSlugs
       </div>
       <div class="featured-work__grid" data-animate-stagger>
         {selectedWork.map((project) => (
-          <a href={`/work/${project.slug}`} class={`project-card ${project.featured ? 'project-card--featured' : ''}`}>
+          <a href={`/work/${project.slug}`} class={`project-card project-card--${project.size}`}>
             <div class="project-card__image">
               <div class="project-card__placeholder" aria-hidden="true"></div>
               {project.image && (
@@ -135,6 +147,9 @@ const selectedWork = selectedWorkSlugs
             <div class="project-card__content">
               <span class="project-card__category">{project.category}</span>
               <h3 class="project-card__title">{project.title}</h3>
+              {project.size !== 'sm' && project.description && (
+                <p class="project-card__desc">{project.description}</p>
+              )}
             </div>
           </a>
         ))}
@@ -479,10 +494,11 @@ const selectedWork = selectedWorkSlugs
     color: var(--color-accent-hover);
   }
 
-  /* Featured Work */
+  /* Featured Work — Asymmetric Mosaic */
   .featured-work__grid {
     display: grid;
-    gap: var(--space-6);
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-4);
   }
 
   .project-card {
@@ -491,6 +507,7 @@ const selectedWork = selectedWorkSlugs
     overflow: hidden;
     border-radius: var(--radius-lg);
     background: var(--color-surface);
+    grid-column: span 12;
   }
 
   .project-card__image {
@@ -524,7 +541,10 @@ const selectedWork = selectedWorkSlugs
   }
 
   .project-card__content {
-    padding: var(--space-6);
+    padding: var(--space-4) var(--space-6) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
   }
 
   .project-card__category {
@@ -533,7 +553,6 @@ const selectedWork = selectedWorkSlugs
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: var(--space-2);
   }
 
   :global([data-theme="light"]) .project-card__category {
@@ -543,6 +562,15 @@ const selectedWork = selectedWorkSlugs
   .project-card__title {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
+  }
+
+  .project-card__desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* Services */
@@ -751,16 +779,28 @@ const selectedWork = selectedWorkSlugs
 
   /* Responsive */
   @media (min-width: 768px) {
-    .featured-work__grid {
-      grid-template-columns: repeat(2, 1fr);
+    .project-card--lg {
+      grid-column: span 7;
     }
 
-    .project-card--featured {
-      grid-column: span 2;
+    .project-card--lg .project-card__image {
+      aspect-ratio: 16 / 10;
     }
 
-    .project-card--featured .project-card__image {
-      aspect-ratio: 21 / 9;
+    .project-card--md {
+      grid-column: span 5;
+    }
+
+    .project-card--md .project-card__image {
+      aspect-ratio: 4 / 3;
+    }
+
+    .project-card--sm {
+      grid-column: span 4;
+    }
+
+    .project-card--sm .project-card__image {
+      aspect-ratio: 3 / 2;
     }
 
     .services__grid {

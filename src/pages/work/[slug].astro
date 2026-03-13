@@ -29,7 +29,7 @@ interface Props {
 
 const { project, prevProject, nextProject } = Astro.props;
 const { Content } = await project.render();
-const { title, description, category, client, role, year, industry, image } = project.data;
+const { title, description, category, client, role, year, industry, image, imageFit } = project.data;
 ---
 
 <CaseStudyLayout
@@ -41,8 +41,9 @@ const { title, description, category, client, role, year, industry, image } = pr
   year={year}
   industry={industry}
   image={image}
-  prevProject={prevProject}
-  nextProject={nextProject}
+  imageFit={imageFit}
+  prevProject={prevProject ?? undefined}
+  nextProject={nextProject ?? undefined}
 >
   <Content />
 </CaseStudyLayout>

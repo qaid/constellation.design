@@ -1,69 +1,52 @@
 ---
 title: "African Puzzle"
-description: "Platform design for connecting African diaspora communities through shared stories, culture, and opportunity."
-category: "UX Design"
-client: "African Puzzle"
-role: "UX Design Lead"
-year: "2023"
-industry: "Community & Culture"
+description: "Design leadership and product ownership for a personal assistant app serving artisans, creatives, and entrepreneurs across 70 countries."
+category: "Product Strategy"
+role: "Design Lead & Product Owner"
+year: "2024"
+industry: "Productivity & Creative Tools"
 featured: true
-order: 4
-draft: true
+order: 2
+image: "/images/work/african-puzzle/african-puzzle-cover.png"
+draft: false
 ---
 
-## The Challenge
+### Background & Overview
 
-African Puzzle is a platform designed to connect members of the African diaspora worldwide. The founders envisioned a space where people could share stories, celebrate culture, find opportunities, and build meaningful connections across borders.
+Most productivity tools are built for office workers in corporate environments. They assume laptops, calendars, email threads, and Slack channels. But there's a massive population of working people — artisans, tailors, creatives, entrepreneurs — whose professional lives don't look anything like that. Their workflows are tactile, relationship-driven, and deeply personal. They deserve tools that meet them where they are.
 
-The challenge was to design an experience that felt authentic to diverse African cultures while being accessible and engaging for a global audience.
+African Puzzle is a personal assistant app designed specifically for these users. As Design Lead and Product Owner, I shaped the product from the ground up: defining what it should be, how it should work, and why it matters.
 
-## The Approach
+<div class="case-callout">
+  <div class="case-callout__inner">
+    <h3 class="case-callout__title">The Problem</h3>
+    <p>Creative professionals and small business owners across Africa and its diaspora manage projects, clients, and schedules using tools that were never designed for the way they work. The gap isn't a missing feature — it's a missing perspective.</p>
+  </div>
+</div>
 
-This project required deep cultural sensitivity and extensive community involvement. We conducted research across multiple diaspora communities in Europe, North America, and Africa to understand needs, behaviors, and aspirations.
+#### Designing around how people actually work.
 
-### Research Insights
+The app is organized around four concepts: PROGRAMMES for consolidating project details in one place, CLIENTS for quick-reference customer profiles, ALBUM for grouping work by theme, and RENDEZ-VOUS for managing appointments with built-in reminders. The naming is deliberate — rooted in the linguistic and cultural context of the user base, not borrowed from Silicon Valley convention.
 
-- Strong desire for authentic representation and storytelling
-- Interest in professional networking alongside cultural connection
-- Importance of regional and ethnic identity within pan-African context
-- Need for both public sharing and private community spaces
+Every design decision started with the same question: does this reflect how these users think about their work, or are we imposing a pattern from somewhere else? Enterprise project management tools break work into tickets and sprints. That framework means nothing to a tailor managing commissions or an artisan coordinating materials and delivery across borders.
 
-## The Solution
+<div class="case-callout">
+  <div class="case-callout__inner">
+    <h3 class="case-callout__title">My Process</h3>
+    <p>Wearing both the design and product hats meant moving between research, strategy, and execution constantly. I defined the product vision, led user research across multiple markets, designed the interface, and guided the app through to beta launch — making the hard calls about what to build first and what to leave for later.</p>
+  </div>
+</div>
 
-We designed a platform built around three interconnected pillars: Stories, Community, and Opportunity.
+#### Resisting the defaults.
 
-### Stories
+It would have been easy to start with a project management template and skin it for a new audience. But the whole point was to resist that impulse. The interface needed to feel intuitive to someone who has never used Asana or Trello — and might not want to. Simplicity wasn't a constraint; it was the product strategy. Make your clients happy. Save time. Be more efficient. Nothing more, nothing less.
 
-A rich content experience where members share personal narratives, cultural insights, and creative work. The editorial approach celebrates diverse voices and perspectives, with features that highlight different regions, traditions, and experiences.
+### The Outcome
 
-### Community
+African Puzzle is live at [africanpuzzle.com](https://africanpuzzle.com) and available in beta on Google Play across 70 countries. The product continues to evolve based on user feedback, but the foundation — a tool that respects its users' reality — is solid.
 
-Flexible group structures that allow members to connect around shared interests, locations, professions, or cultural backgrounds. Communities can be public or private, with tools for events, discussions, and resource sharing.
+### Like what you see?
 
-### Opportunity
+Don't hesitate to reach out so we can chat about working on a project together.
 
-A professional layer that connects talent with opportunities—jobs, mentorship, collaboration, and investment. This section bridges the gap between cultural community and professional advancement.
-
-> "The design captures the spirit of what we're building. It feels like home for our community while being welcoming to everyone."
-
-## Design Principles
-
-Several key principles guided our design decisions:
-
-- **Authentic representation**—Visual design draws from African aesthetics without stereotyping
-- **Inclusive by default**—Accessible design that works across devices and connection speeds
-- **Community-first**—Features that encourage connection over passive consumption
-- **Flexible identity**—Members can express multiple aspects of their identity
-
-## Impact
-
-The platform launched in beta with strong community response:
-
-- 10,000+ members in first three months
-- Active communities across 40+ countries
-- High engagement rates on story content
-- Successful pilot of opportunity matching feature
-
-## Reflection
-
-This project reinforced the importance of designing with communities, not just for them. The most meaningful features emerged from listening to community members and involving them throughout the process. It's work I'm deeply proud of.
+[Contact me](/contact)
