@@ -4,20 +4,37 @@ This project is a bespoke marketing site for **Constellation Design**, a creativ
 
 ## 🚀 Project Structure
 
-The repo follows a lean Astro layout so design explorations stay focused on the single-page experience:
-
 ```text
 /
 ├── public/
+│   ├── .well-known/          # security.txt
+│   ├── images/
+│   │   ├── collaborators/    # Client/partner logos (SVG, PNG)
+│   │   └── work/             # Case study images by slug
+│   ├── llms.txt              # Structured site overview for LLMs
+│   ├── llms-full.txt         # Full-text content for LLM ingestion
+│   ├── robots.txt
+│   └── site.webmanifest
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/           # Header, Footer, Button, ThemeToggle
+│   ├── content/
+│   │   ├── config.ts         # Content collection schema (Zod)
+│   │   └── projects/         # Markdown case studies
+│   ├── layouts/              # BaseLayout, CaseStudyLayout, PageLayout
+│   ├── pages/
+│   │   ├── index.astro       # Home — hero constellation + featured work
+│   │   ├── about.astro
+│   │   ├── contact.astro
+│   │   ├── services.astro
+│   │   └── work/             # Work listing + dynamic [slug] routes
+│   └── styles/               # tokens, typography, animations, reset, utilities, global
 └── package.json
 ```
 
-- `src/pages/index.astro` houses the hero constellation, sections, and inline scripts (particle streams, client carousel).  
-- `src/components/` is available for extracted UI pieces if the page expands.  
-- Static assets (logos, textures, fonts) live under `public/`.
+- **Layout hierarchy:** `BaseLayout` (HTML shell + meta) wraps `CaseStudyLayout` or `PageLayout`, which include `Header` and `Footer`.
+- **Content:** Case studies live in `src/content/projects/` as Markdown with typed frontmatter. Images follow the `/images/work/{slug}/` convention.
+- **Design tokens:** `src/styles/tokens.css` is the source of truth for colors, spacing, and typography. Dark-first with light theme overrides.
+- **Static assets:** Favicons, logos, and work images live under `public/`.
 
 ## 🧞 Commands
 
