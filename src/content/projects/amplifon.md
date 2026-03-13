@@ -7,7 +7,7 @@ role: "Design Lead"
 year: "2023"
 industry: "Healthcare"
 featured: false
-order: 2
+order: 5
 image: "/images/work/amplifon/amplifon-cover.png"
 ---
 

@@ -1,15 +1,15 @@
 # Constellation Design — Full Site Content
 
 > This file contains the complete text content of constellation.design for LLM ingestion.
-> Last updated: 2026-03-12
+> Last updated: 2026-03-13
 
 ---
 
 ## Home
 
-**Constellation Design** is a creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam.
+**Constellation Design** is a creative consultancy and product studio driven by curiosity, led by Qa'id Jacobs from Amsterdam.
 
-The studio partners with brands to create meaningful digital experiences rooted in research, storytelling, and craft.
+The studio partners with brands to create meaningful digital experiences rooted in research, storytelling, and craft — and builds its own tools and platforms independently.
 
 ### Selected Work
 
@@ -17,21 +17,21 @@ The studio partners with brands to create meaningful digital experiences rooted 
 Visual exploration and promotional design for The Wild Pop-up Bookstore.
 https://constellation.design/work/the-wild
 
-**Amplifon's Audiologist Dashboard** — UX Design, 2023
-Optimising the flows and dashboards used by audiologists to assess walk-in patients.
-https://constellation.design/work/amplifon
+**African Puzzle** — Product Strategy, 2024
+Design leadership and product ownership for a personal assistant app serving artisans, creatives, and entrepreneurs across 70 countries.
+https://constellation.design/work/african-puzzle
 
-**The Usual Hotel's User Experience** — UX Design, 2023
-Establishing an experience that takes hotel guests from booking online to checking in.
-https://constellation.design/work/the-usual-hotel
+**Look Ma, No Hands** — UX Design, 2025
+A macOS voice dictation and meeting transcription app. 100% local, privacy-first, built with WhisperKit and Core ML.
+https://constellation.design/work/look-ma-no-hands
 
 ---
 
 ## About
 
-Constellation Design is a creative consultancy led by **Qa'id Jacobs**, a designer and creative director based in Amsterdam, Netherlands.
+Constellation Design is a creative consultancy and product studio led by **Qa'id Jacobs**, a designer, creative director, and product builder based in Amsterdam, Netherlands.
 
-The studio brings a considered, process-led approach to every engagement. Work spans UX design, creative direction, product strategy, and facilitated workshops — often combining multiple disciplines on a single project.
+The studio brings a considered, process-led approach to every engagement. Work spans UX design, creative direction, product strategy, and facilitated workshops — often combining multiple disciplines on a single project. Beyond client work, the studio designs and builds its own tools and platforms to solve problems encountered firsthand.
 
 The name Constellation Design reflects how ideas and people connect: individual points of light that, when seen together, form something larger and more meaningful.
 
@@ -70,6 +70,48 @@ https://constellation.design/work/the-wild
 
 ---
 
+### African Puzzle
+**Category:** Product Strategy
+**Role:** Design Lead & Product Owner
+**Year:** 2024
+**Industry:** Productivity & Creative Tools
+
+Design leadership and product ownership for a personal assistant app serving artisans, creatives, and entrepreneurs across 70 countries.
+
+African Puzzle is a personal assistant app designed for artisans, tailors, creatives, and entrepreneurs. As Design Lead and Product Owner, Qa'id shaped the product from the ground up — defining what it should be, how it should work, and why it matters. The app is available in beta on Google Play across 70 countries.
+
+https://constellation.design/work/african-puzzle
+
+---
+
+### Look Ma, No Hands
+**Category:** UX Design
+**Role:** Designer & Developer
+**Year:** 2025
+**Industry:** Productivity & Developer Tools
+
+A macOS voice dictation and meeting transcription app. 100% local processing, privacy-first, built with WhisperKit and Core ML.
+
+Look Ma, No Hands is a native macOS app that does voice dictation and meeting transcription entirely on-device. No cloud, no accounts, no internet required. Designed and built end-to-end by Qa'id — from product definition and UX design through Swift/SwiftUI development, security hardening, and distribution via Homebrew. Open source under MIT license.
+
+https://constellation.design/work/look-ma-no-hands
+
+---
+
+### ScopeMatch
+**Category:** Product Strategy
+**Role:** Founder & Developer
+**Year:** 2025
+**Industry:** Quality Assurance & Testing
+
+A pan-European directory of ISO 17025 accredited testing laboratories. 13,700+ labs across 6 countries with AI-powered search.
+
+ScopeMatch aggregates data from six national accreditation bodies (DAkkS, UKAS, COFRAC, RvA, ACCREDIA, ENAC) into one unified, searchable directory. The platform normalises test method references across countries and languages using AI-powered taxonomy classification. Founded and built by Qa'id.
+
+https://constellation.design/work/scopematch
+
+---
+
 ### Amplifon's Audiologist Dashboard
 **Category:** UX Design
 **Client:** Amplifon
@@ -97,6 +139,20 @@ Establishing an experience that takes hotel guests from booking online to checki
 The Usual Hotel is a boutique hotel concept with a focus on simplicity and warmth. This engagement covered the full digital guest journey — from discovery and booking through to on-property digital touchpoints and check-in flows.
 
 https://constellation.design/work/the-usual-hotel
+
+---
+
+### Spook
+**Category:** UX Design
+**Role:** Designer & Developer
+**Year:** 2025
+**Industry:** Developer Tools & Security
+
+A lightweight macOS network traffic monitor with per-app breakdown, connection details, and traffic history.
+
+Spook is a macOS menu bar app that monitors network traffic in real time. Named after Sam Greenlee's 1969 novel, it shows per-app traffic breakdown, connection details with resolved hostnames, and usage graphs. Built with Swift/SwiftUI, open source. No special permissions required.
+
+https://constellation.design/work/spook
 
 ---
 

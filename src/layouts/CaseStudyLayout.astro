@@ -13,6 +13,7 @@ interface Props {
   year?: string;
   industry?: string;
   image?: string;
+  imageFit?: 'cover' | 'contain';
   prevProject?: { slug: string; title: string };
   nextProject?: { slug: string; title: string };
 }
@@ -26,6 +27,7 @@ const {
   year,
   industry,
   image,
+  imageFit = 'cover',
   prevProject,
   nextProject
 } = Astro.props;
@@ -52,7 +54,7 @@ const caseStudyJsonLd: Record<string, unknown> = {
     <section class="case-hero">
       <div class="container">
         <div class="case-hero__layout">
-          <div class="case-hero__media" data-animate>
+          <div class={`case-hero__media ${imageFit === 'contain' ? 'case-hero__media--contain' : ''}`} data-animate>
             {image ? (
               <img class="case-hero__img" src={image} alt={title} loading="eager" decoding="async" />
             ) : (
@@ -392,6 +394,16 @@ const caseStudyJsonLd: Record<string, unknown> = {
     object-fit: cover;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
+  }
+
+  .case-hero__media--contain {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .case-hero__media--contain .case-hero__img {
+    object-fit: contain;
   }
 
   /* Case Snapshot */

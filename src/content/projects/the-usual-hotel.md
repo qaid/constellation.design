@@ -7,7 +7,7 @@ role: "UX Design Lead"
 year: "2023"
 industry: "Hospitality"
 featured: false
-order: 3
+order: 6
 image: "/images/work/the-usual-hotel/the-usual-hotels-cover.png"
 ---
 
