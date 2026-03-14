@@ -35,9 +35,8 @@
   --color-overlay-text: #FFFFFF;
 
   /* Typography - Scale */
-  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-display: 'Syne', var(--font-family-primary);
-  
+  /* --font-family-primary and --font-family-display are set by Astro's Fonts API */
+
   --font-size-xs: 1rem;        /* 16px — floor */
   --font-size-sm: 1rem;        /* 16px */
   --font-size-base: 1.125rem;  /* 18px */

@@ -4,7 +4,7 @@ Creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam.
 
 ## Tech Stack
 
-- **Framework:** Astro 5.16.4
+- **Framework:** Astro 6.0.4
 - **Runtime:** Bun 1.3.3
 - **TypeScript:** Strict mode (`astro/tsconfigs/strict`)
 - **Deployment:** GitHub Pages via GitHub Actions
@@ -30,8 +30,8 @@ Push to `master` triggers `.github/workflows/deploy.yml`, which builds with Bun 
 src/
 ├── components/     Header.astro, Footer.astro, Button.astro, ThemeToggle.astro
 ├── content/
-│   ├── config.ts   Content collection schema (Zod)
 │   └── projects/   Markdown case studies
+├── content.config.ts  Content collection schema (Zod, glob loader)
 ├── layouts/        BaseLayout > CaseStudyLayout / PageLayout
 ├── pages/          index, about, services, contact, work/
 └── styles/         tokens, typography, animations, utilities, global
@@ -41,7 +41,7 @@ Layout hierarchy: `BaseLayout` (HTML shell + meta + head) wraps `CaseStudyLayout
 
 ## Content Schema
 
-Defined in `src/content/config.ts`:
+Defined in `src/content.config.ts` (uses `glob()` loader):
 
 | Field | Type | Notes |
 |-------|------|-------|
@@ -71,9 +71,10 @@ Image convention: `/images/work/{slug}/{slug}-cover.png` and `/images/work/{slug
 
 **Dual-theme:** Dark-first (`:root`), with `[data-theme="light"]` overrides. Always update both when modifying color tokens.
 
-**Typography:**
-- Body: `Inter` (400, 500, 600, 700)
-- Display (headings): `Syne` (500, 600, 700, 800)
+**Typography (self-hosted via Astro Fonts API):**
+- Body: `Inter` (400, 500, 600, 700) — `--font-family-primary`
+- Display (headings): `Syne` (500, 600, 700, 800) — `--font-family-display`
+- Font config in `astro.config.mjs`, rendered via `<Font>` component in BaseLayout
 - Scale: `--font-size-xs` through `--font-size-6xl`
 
 **Spacing:** 4px base, `--space-1` (4px) through `--space-32` (128px)
@@ -207,8 +208,7 @@ When building new Astro components:
 ## Known Limitations
 
 - **Permissions-Policy** cannot be set via meta tags — only via HTTP headers, which GitHub Pages does not support
-- **Google Fonts** are loaded via CDN — `font-src` and `style-src` CSP must include `googleapis.com` and `gstatic.com`
-- **CSP `'unsafe-inline'`** is required for Astro's inline theme script and scoped styles
+- **CSP** is managed by Astro 6's built-in CSP with automatic script/style hashing — configured in `astro.config.mjs` under `security.csp`
 
 ## AI Agent Standards (as of early 2026)
 
