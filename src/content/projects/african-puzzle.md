@@ -8,6 +8,7 @@ industry: "Productivity & Creative Tools"
 featured: true
 order: 2
 image: "/images/work/african-puzzle/african-puzzle-cover.png"
+website: "https://africanpuzzle.com/"
 draft: false
 ---
 

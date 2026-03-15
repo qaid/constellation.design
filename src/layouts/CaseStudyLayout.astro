@@ -14,6 +14,7 @@ interface Props {
   industry?: string;
   image?: string;
   imageFit?: 'cover' | 'contain';
+  website?: string;
   prevProject?: { slug: string; title: string };
   nextProject?: { slug: string; title: string };
 }
@@ -28,6 +29,7 @@ const {
   industry,
   image,
   imageFit = 'cover',
+  website,
   prevProject,
   nextProject
 } = Astro.props;
@@ -43,7 +45,8 @@ const caseStudyJsonLd: Record<string, unknown> = {
   },
   ...(client && { "publisher": { "@type": "Organization", "name": client } }),
   ...(year && { "dateCreated": year }),
-  ...(industry && { "genre": industry })
+  ...(industry && { "genre": industry }),
+  ...(website && { "url": website })
 };
 ---
 
@@ -96,6 +99,14 @@ const caseStudyJsonLd: Record<string, unknown> = {
             <div class="case-snapshot__item">
               <span class="case-snapshot__label">Industry</span>
               <span class="case-snapshot__value">{industry}</span>
+            </div>
+          )}
+          {website && (
+            <div class="case-snapshot__item">
+              <span class="case-snapshot__label">Website</span>
+              <a href={website} class="case-snapshot__value case-snapshot__link" target="_blank" rel="noopener noreferrer">
+                {new URL(website).hostname.replace('www.', '')}
+              </a>
             </div>
           )}
         </div>
@@ -445,6 +456,18 @@ const caseStudyJsonLd: Record<string, unknown> = {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
+  }
+
+  a.case-snapshot__link {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  a.case-snapshot__link:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .case-hero__category {
