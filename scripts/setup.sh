@@ -18,12 +18,20 @@ fi
 BUN_VERSION=$(bun --version)
 echo "    Bun $BUN_VERSION found"
 
-# Check for Node (Astro needs it for some tooling)
+# Check for Node.js >= 22.12.0 (required by Astro 6)
 if ! command -v node &>/dev/null; then
-  echo "Warning: Node.js not found. Some Astro tooling may require it."
-else
-  echo "    Node $(node --version) found"
+  echo "Error: Node.js is not installed. Astro 6 requires Node.js >= 22.12.0."
+  exit 1
 fi
+
+NODE_VERSION=$(node --version | sed 's/^v//')
+NODE_MAJOR=$(echo "$NODE_VERSION" | cut -d. -f1)
+NODE_MINOR=$(echo "$NODE_VERSION" | cut -d. -f2)
+if [ "$NODE_MAJOR" -lt 22 ] || { [ "$NODE_MAJOR" -eq 22 ] && [ "$NODE_MINOR" -lt 12 ]; }; then
+  echo "Error: Node.js $NODE_VERSION found, but Astro 6 requires >= 22.12.0."
+  exit 1
+fi
+echo "    Node v$NODE_VERSION found"
 
 echo "==> Installing dependencies..."
 bun install
