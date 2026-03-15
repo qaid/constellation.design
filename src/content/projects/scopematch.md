@@ -6,7 +6,7 @@ role: "Founder & Developer"
 year: "2025"
 industry: "Quality Assurance & Testing"
 featured: false
-order: 4
+order: 3
 image: "/images/work/scopematch/scopematch-cover.png"
 imageFit: "contain"
 website: "https://scopematch.eu"

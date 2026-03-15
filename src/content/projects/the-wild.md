@@ -7,7 +7,7 @@ role: "Creative Direction"
 year: "2024"
 industry: "Publishing & Community"
 featured: true
-order: 1
+order: 4
 image: "/images/work/the-wild/the-wild-cover.png"
 ---
 
