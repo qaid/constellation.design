@@ -5,7 +5,7 @@ Creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam.
 ## Tech Stack
 
 - **Framework:** Astro 6.0.4
-- **Runtime:** Bun 1.3.3
+- **Runtime:** Bun 1.3.3 (requires Node.js >= 22.12.0 for Astro 6)
 - **TypeScript:** Strict mode (`astro/tsconfigs/strict`)
 - **Deployment:** GitHub Pages via GitHub Actions
 - **Site:** https://constellation.design
@@ -22,7 +22,7 @@ bunx astro check    # TypeScript/Astro diagnostics
 
 ## Deployment
 
-Push to `master` triggers `.github/workflows/deploy.yml`, which builds with Bun and deploys to GitHub Pages. A monthly cron also triggers redeploy. Manual dispatch is available.
+Push to `main` triggers `.github/workflows/deploy.yml`, which sets up Node.js 22 and Bun, then builds and deploys to GitHub Pages. A monthly cron also triggers redeploy. Manual dispatch is available.
 
 ## Architecture
 
@@ -194,7 +194,7 @@ When building new Astro components:
 
 ### Deployment
 
-- Branch: `master` (not `main`)
+- Branch: `main`
 - Deploy workflow: `.github/workflows/deploy.yml`
 - Build command: `bun run build`
 - Build output: `dist/`
