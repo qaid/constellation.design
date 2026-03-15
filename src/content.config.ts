@@ -16,6 +16,7 @@ const projectsCollection = defineCollection({
     order: z.number().default(0),
     image: z.string().optional(),
     imageFit: z.enum(['cover', 'contain']).default('cover'),
+    website: z.string().url().optional(),
     draft: z.boolean().default(false),
   }),
 });

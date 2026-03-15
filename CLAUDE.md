@@ -55,6 +55,7 @@ Defined in `src/content.config.ts` (uses `glob()` loader):
 | `featured` | `boolean` | Default: `false` |
 | `order` | `number` | Display order, default: `0` |
 | `image` | `string` | Cover image path, e.g. `/images/work/{slug}/{slug}-cover.png` |
+| `website` | `string` (URL) | Optional — live project URL, rendered as link in snapshot card |
 | `draft` | `boolean` | Default: `false` — draft entries are excluded from production |
 
 Image convention: `/images/work/{slug}/{slug}-cover.png` and `/images/work/{slug}/{slug}-{n}.png`
@@ -127,6 +128,7 @@ industry: "Industry Name"
 featured: false
 order: 6
 image: "/images/work/{slug}/{slug}-cover.png"
+website: "https://example.com"  # Optional — live project URL
 draft: false  # Set to true to hide from production
 ---
 ```

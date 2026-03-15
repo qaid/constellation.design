@@ -8,6 +8,7 @@ industry: "Productivity & Developer Tools"
 featured: true
 order: 3
 image: "/images/work/look-ma-no-hands/look-ma-no-hands-cover.png"
+website: "https://qaid.github.io/look-ma-no-hands/"
 draft: false
 ---
 
