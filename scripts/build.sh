@@ -13,10 +13,20 @@ echo "==> Building for production..."
 bun run build
 
 # Check for draft content leaking into dist
-if grep -r '"draft":true\|draft: true' dist/ 2>/dev/null; then
-  echo "Error: Draft content found in production build!"
+FAILED=0
+for file in src/content/projects/*.md; do
+  if grep -q "^draft: true" "$file"; then
+    slug=$(basename "$file" .md)
+    if [ -d "dist/work/$slug" ]; then
+      echo "ERROR: Draft content '$slug' found in build output"
+      FAILED=1
+    fi
+  fi
+done
+if [ "$FAILED" -eq 1 ]; then
   exit 1
 fi
+echo "    Draft content check passed"
 
 echo "==> Build complete. Output in dist/"
 echo "    Run 'bun run preview' to preview locally."

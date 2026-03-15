@@ -15,6 +15,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@types/node": "^25.5.0",
     "lefthook": "^1.9.0"
   }
 }
