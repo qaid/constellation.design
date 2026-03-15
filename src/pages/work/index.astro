@@ -7,7 +7,7 @@ const allProjects = await getCollection('projects', ({ data }) => !data.draft);
 const projects = allProjects
   .sort((a, b) => a.data.order - b.data.order)
   .map(project => ({
-    slug: project.slug,
+    slug: project.id,
     title: project.data.title,
     category: project.data.category,
     description: project.data.description,

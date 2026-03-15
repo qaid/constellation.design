@@ -1,21 +1,21 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects', ({ data }) => !data.draft);
   const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
-  
+
   return sortedProjects.map((project, index) => {
     const prevProject = index > 0 ? sortedProjects[index - 1] : null;
     const nextProject = index < sortedProjects.length - 1 ? sortedProjects[index + 1] : null;
-    
+
     return {
-      params: { slug: project.slug },
-      props: { 
+      params: { slug: project.id },
+      props: {
         project,
-        prevProject: prevProject ? { slug: prevProject.slug, title: prevProject.data.title } : null,
-        nextProject: nextProject ? { slug: nextProject.slug, title: nextProject.data.title } : null,
+        prevProject: prevProject ? { slug: prevProject.id, title: prevProject.data.title } : null,
+        nextProject: nextProject ? { slug: nextProject.id, title: nextProject.data.title } : null,
       },
     };
   });
@@ -28,7 +28,7 @@ interface Props {
 }
 
 const { project, prevProject, nextProject } = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project);
 const { title, description, category, client, role, year, industry, image, imageFit } = project.data;
 ---
 

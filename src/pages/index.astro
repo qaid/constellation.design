@@ -4,15 +4,14 @@ import Button from '../components/Button.astro';
 import { getCollection } from 'astro:content';
 
 import fs from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
 type CollaboratorLogo = {
   name: string;
   src: string;
 };
 
-const publicRoot = new URL('../../public/', import.meta.url);
-const collaboratorsDir = new URL('./images/collaborators/black/png/', publicRoot);
+const collaboratorsDir = path.join(process.cwd(), 'public/images/collaborators/black/png');
 
 const humanizeFilename = (filename: string) =>
   filename
@@ -22,7 +21,7 @@ const humanizeFilename = (filename: string) =>
     .trim();
 
 const collaborators: CollaboratorLogo[] = fs
-  .readdirSync(fileURLToPath(collaboratorsDir), { withFileTypes: true })
+  .readdirSync(collaboratorsDir, { withFileTypes: true })
   .filter((entry) => entry.isFile())
   .map((entry) => entry.name)
   .filter((name) => /\.(png)$/i.test(name))
@@ -42,10 +41,10 @@ const mosaicLayout: { slug: string; size: 'lg' | 'md' | 'sm' | 'tall' }[] = [
 const allProjects = await getCollection('projects', ({ data }) => !data.draft);
 const selectedWork = mosaicLayout
   .map(({ slug, size }) => {
-    const project = allProjects.find((p) => p.slug === slug);
+    const project = allProjects.find((p) => p.id === slug);
     if (!project) return null;
     return {
-      slug: project.slug,
+      slug: project.id,
       title: project.data.title,
       description: project.data.description,
       category: project.data.category,
