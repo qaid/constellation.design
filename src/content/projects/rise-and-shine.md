@@ -15,7 +15,7 @@ draft: true
 
 Rise and Shine is a mobile app designed to help people build sustainable morning routines. In a crowded wellness app market, they needed a visual identity that would stand out while communicating their core message: small, consistent actions lead to meaningful change.
 
-The founders wanted to avoid the typical wellness aesthetic—neither the aggressive "hustle culture" look nor the overly soft "self-care" approach. They needed something that felt energizing but achievable.
+The founders wanted to avoid the typical wellness aesthetic. Neither the aggressive "hustle culture" look nor the overly soft "self-care" approach. They needed something that felt energizing but achievable.
 
 ## The Approach
 
@@ -23,11 +23,11 @@ We explored the emotional journey of building a morning routine: the initial mot
 
 ### Brand Strategy
 
-The positioning centers on "gentle momentum"—the idea that sustainable change comes from small steps taken consistently, not dramatic overhauls. The brand should feel like a supportive friend, not a demanding coach.
+The positioning centers on "gentle momentum" - the idea that sustainable change comes from small steps taken consistently, not dramatic overhauls. The brand should feel like a supportive friend, not a demanding coach.
 
 ## The Identity
 
-We developed a visual system that captures the transition from night to day—the gradual awakening that mirrors the user's journey toward better habits.
+We developed a visual system that captures the transition from night to day. The gradual awakening that mirrors the user's journey toward better habits.
 
 ### Color System
 
@@ -43,7 +43,7 @@ Custom illustrations use simple shapes and the gradient palette to depict mornin
 
 ### Motion Principles
 
-Animation guidelines emphasize smooth, gradual transitions that mirror the app's philosophy. Nothing is jarring or abrupt—every motion feels natural and calming.
+Animation guidelines emphasize smooth, gradual transitions that mirror the app's philosophy. Nothing is jarring or abrupt. Every motion feels natural and calming.
 
 > "The identity perfectly captures what we're about. It's motivating without being pushy, beautiful without being precious. Our users love it."
 
@@ -68,4 +68,4 @@ The brand launched alongside the app's public release:
 
 ## Reflection
 
-This project was a great example of how visual identity can reinforce product philosophy. By embedding the app's values into every design decision, we created a brand that doesn't just look good—it actively supports the user experience and mission.
+This project was a great example of how visual identity can reinforce product philosophy. By embedding the app's values into every design decision, we created a brand that doesn't just look good; it actively supports the user experience and mission.
