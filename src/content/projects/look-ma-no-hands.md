@@ -6,7 +6,7 @@ role: "Designer & Developer"
 year: "2025"
 industry: "Productivity & Developer Tools"
 featured: true
-order: 3
+order: 2
 image: "/images/work/look-ma-no-hands/look-ma-no-hands-cover.png"
 website: "https://qaid.github.io/look-ma-no-hands/"
 draft: false

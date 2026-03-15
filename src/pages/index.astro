@@ -32,11 +32,11 @@ const collaborators: CollaboratorLogo[] = fs
   }));
 
 const mosaicLayout: { slug: string; size: 'lg' | 'md' | 'sm' | 'tall' }[] = [
-  { slug: 'the-wild', size: 'lg' },
-  { slug: 'african-puzzle', size: 'md' },
+  { slug: 'african-puzzle', size: 'lg' },
   { slug: 'look-ma-no-hands', size: 'md' },
-  { slug: 'the-usual-hotel', size: 'tall' },
   { slug: 'scopematch', size: 'md' },
+  { slug: 'the-wild', size: 'tall' },
+  { slug: 'the-usual-hotel', size: 'md' },
 ];
 const allProjects = await getCollection('projects', ({ data }) => !data.draft);
 const selectedWork = mosaicLayout
