@@ -1,6 +1,6 @@
 ---
 title: "ScopeMatch"
-description: "A pan-European directory of ISO 17025 accredited testing laboratories. 13,700+ labs across 6 countries with AI-powered search."
+description: "A pan-European directory of ISO 17025 accredited testing laboratories. 13,700+ labs across 6 countries with unified search."
 category: "Product Strategy"
 role: "Founder & Developer"
 year: "2025"
@@ -30,12 +30,12 @@ I built ScopeMatch to fix that.
 
 The interesting problem here isn't building a search engine. It's normalization. The same tensile test might be referenced as "EN ISO 6892-1" in Germany, "BS EN ISO 6892-1" in the UK, and "NF EN ISO 6892-1" in France. Multiply that across thousands of test methods and six languages, and you have a classification problem that's genuinely hard to solve at scale.
 
-I built a data platform that aggregates lab profiles and scope data from each national accreditation body and normalizes everything into a unified taxonomy. AI-powered classification maps test method variants across borders, so a search for one finds them all. The result: 13,700+ labs with over 122,000 capability variants, all searchable from one interface.
+I built a data platform that aggregates lab profiles and scope data from each national accreditation body and normalizes everything into a unified taxonomy. Automated classification maps test method variants across borders, so a search for one finds them all. The result: 13,700+ labs with over 122,000 capability variants, all searchable from one interface.
 
 <div class="case-callout">
   <div class="case-callout__inner">
     <h3 class="case-callout__title">My Process</h3>
-    <p>From market research through architecture, data modeling, taxonomy design, AI classification, and web development. This is a solo build across the full stack. The hardest part wasn't the technology; it was the taxonomy - painstaking normalization work that makes the whole product possible.</p>
+    <p>From market research through architecture, data modeling, taxonomy design, classification, and web development. This is a solo build across the full stack. The hardest part wasn't the technology; it was the taxonomy - painstaking normalization work that makes the whole product possible.</p>
   </div>
 </div>
 
