@@ -16,7 +16,7 @@ Constellation Design partners with brands to create meaningful digital experienc
 - [The Wild](https://constellation.design/work/the-wild): Visual exploration and promotional design for The Wild Pop-up Bookstore.
 - [African Puzzle](https://constellation.design/work/african-puzzle): Design leadership and product ownership for a personal assistant app serving artisans, creatives, and entrepreneurs across 70 countries.
 - [Look Ma, No Hands](https://constellation.design/work/look-ma-no-hands): A macOS voice dictation and meeting transcription app. 100% local, privacy-first, built with WhisperKit and Core ML.
-- [ScopeMatch](https://constellation.design/work/scopematch): A pan-European directory of ISO 17025 accredited testing laboratories. 13,700+ labs across 6 countries with AI-powered search.
+- [ScopeMatch](https://constellation.design/work/scopematch): A pan-European directory of ISO 17025 accredited testing laboratories. 13,700+ labs across 6 countries with unified search.
 - [Amplifon](https://constellation.design/work/amplifon): Optimising the flows and dashboards used by audiologists to assess walk-in patients.
 - [The Usual Hotel](https://constellation.design/work/the-usual-hotel): Establishing an experience that takes hotel guests from booking online to checking in.
 - [Spook](https://constellation.design/work/spook): A lightweight macOS network traffic monitor with per-app breakdown, connection details, and traffic history.
