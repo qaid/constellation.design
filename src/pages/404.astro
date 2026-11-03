@@ -1,0 +1,46 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<PageLayout title="Page Not Found" description="This page does not exist on constellation.design.">
+  <section class="not-found">
+    <div class="container">
+      <div class="not-found__content">
+        <p class="not-found__code">404</p>
+        <h1 class="not-found__title">Page not found</h1>
+        <p class="not-found__text lead">
+          This page doesn't exist, or it has moved.
+        </p>
+        <Button href="/" variant="primary" size="lg">Back to home</Button>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .not-found {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--space-32) + var(--space-16));
+    padding-bottom: var(--space-24);
+  }
+
+  .not-found__code {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-lg);
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .not-found__title {
+    font-size: clamp(var(--font-size-4xl), 8vw, var(--font-size-6xl));
+    margin-bottom: var(--space-6);
+  }
+
+  .not-found__text {
+    max-width: 500px;
+    margin-bottom: var(--space-8);
+  }
+</style>
