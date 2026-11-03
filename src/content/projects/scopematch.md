@@ -53,7 +53,7 @@ The initial six countries - Germany, the UK, France, the Netherlands, Italy, and
 
 ### The Outcome
 
-ScopeMatch is live at [scopematch.eu](https://scopematch.eu) with 10,000+ verified labs across 7 countries, 97.5% geocoded, generating 10,000+ indexable pages. The platform serves quality engineers, procurement teams, and lab managers looking for accredited testing partners across European borders.
+ScopeMatch is live at [scopematch.eu](https://scopematch.eu) with 10,000+ verified labs across 7 countries, 98.5% geocoded, generating 10,900+ indexable pages. The platform serves quality engineers, procurement teams, and lab managers looking for accredited testing partners across European borders.
 
 ### Like what you see?
 
