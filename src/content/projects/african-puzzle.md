@@ -31,6 +31,12 @@ The app is organized around four concepts: PROGRAMMES for consolidating project 
 
 Every design decision started with the same question: does this reflect how these users think about their work, or are we imposing a pattern from somewhere else? Enterprise project management tools break work into tickets and sprints. That framework means nothing to a tailor managing commissions or an artisan coordinating materials and delivery across borders.
 
+<div class="image-grid image-grid--three">
+  <img src="/images/work/african-puzzle/african-puzzle-1.webp" alt="African Puzzle WORKS app, projects list with photos and due dates" loading="lazy" decoding="async" />
+  <img src="/images/work/african-puzzle/african-puzzle-2.webp" alt="Contacts list with quick links to measurements, appointments and calls" loading="lazy" decoding="async" />
+  <img src="/images/work/african-puzzle/african-puzzle-3.webp" alt="Appointments for the week, by time of day" loading="lazy" decoding="async" />
+</div>
+
 <div class="case-callout">
   <div class="case-callout__inner">
     <h3 class="case-callout__title">My Process</h3>
