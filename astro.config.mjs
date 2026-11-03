@@ -4,6 +4,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://constellation.design',
+  // Astro 7's CSS minifier writes media range syntax (width<=768px) by default; Safari < 16.4 ignores it.
+  vite: { build: { cssTarget: ['safari14'] } },
   fonts: [
     {
       name: 'Inter',
