@@ -32,6 +32,12 @@ The interesting problem here isn't building a search engine. It's normalization.
 
 I built a data platform that aggregates lab profiles and scope data from each national accreditation body and normalizes everything into a unified taxonomy. Automated classification maps test method variants across borders, so a search for one finds them all. The result: 13,700+ labs with over 122,000 capability variants, all searchable from one interface.
 
+<div class="image-grid image-grid--three">
+  <img src="/images/work/scopematch/scopematch-1.webp" alt="ScopeMatch home page on a phone, with lab search" loading="lazy" decoding="async" />
+  <img src="/images/work/scopematch/scopematch-2.webp" alt="Search results for ISO 6892-1, with matched scope lines" loading="lazy" decoding="async" />
+  <img src="/images/work/scopematch/scopematch-3.webp" alt="A lab's test capabilities, by standard and category" loading="lazy" decoding="async" />
+</div>
+
 <div class="case-callout">
   <div class="case-callout__inner">
     <h3 class="case-callout__title">My Process</h3>
