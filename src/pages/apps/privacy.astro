@@ -1,0 +1,104 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="App Privacy Policy" description="Privacy policy for the apps that Constellation Design makes for personal use.">
+  <section class="policy">
+    <div class="container-content">
+      <h1 class="policy__title">App Privacy Policy</h1>
+      <p class="policy__date">Effective date: 3 November 2026</p>
+
+      <h2>Who this covers</h2>
+      <p>
+        This policy covers every app that Constellation Design (Qa'id Jacobs, Amsterdam) makes for personal use. These apps are private tools. Only their maker uses them. They have no other users, no sign-up and no app store release. Every such app follows the rules below.
+      </p>
+
+      <h2>No developer server</h2>
+      <p>
+        The apps have no server run by Constellation Design. An app connects only to the services that you sign in to inside the app (for example Gmail, Microsoft 365, iCloud Mail or another IMAP mail provider) and to your own iCloud account.
+      </p>
+
+      <h2>Your data stays on your device</h2>
+      <p>
+        Your content, such as mail, stays on your device in a local database. Sign-in tokens and passwords stay in the macOS keychain. The apps send nothing to Constellation Design.
+      </p>
+      <ul>
+        <li>No analytics.</li>
+        <li>No ads.</li>
+        <li>No tracking.</li>
+        <li>No sale or sharing of your data with anyone.</li>
+      </ul>
+
+      <h2>On-device AI only</h2>
+      <p>
+        If an app sorts or summarizes your content, it uses only Apple's on-device models. Your content does not go to a cloud AI service.
+      </p>
+
+      <h2>Google user data</h2>
+      <p>
+        If an app uses Google APIs, for example Gmail access with the scope <code>https://mail.google.com/</code>, it uses that data only to show, sort and manage your own mail in the app. The app does not use Google user data for any other purpose.
+      </p>
+      <p>
+        The use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
+      </p>
+
+      <h2>Deleting your data</h2>
+      <p>
+        When you remove an account in an app, the app deletes the local copy of that account's data and its saved sign-in from your device. You can also revoke the app's access at any time in your Google or Microsoft account settings.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        If this policy changes, this page shows the new version and a new effective date.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        For questions about this policy, email <a href="mailto:hello@constellation.design">hello@constellation.design</a>.
+      </p>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .policy {
+    padding-top: calc(var(--space-32) + var(--space-16));
+    padding-bottom: var(--space-24);
+  }
+
+  .policy__title {
+    font-size: clamp(var(--font-size-4xl), 8vw, var(--font-size-6xl));
+    margin-bottom: var(--space-4);
+  }
+
+  .policy__date {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-12);
+  }
+
+  .policy h2 {
+    font-size: var(--font-size-2xl);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
+  }
+
+  .policy p,
+  .policy ul {
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .policy ul {
+    padding-left: var(--space-6);
+    color: var(--color-text-secondary);
+  }
+
+  .policy a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .policy code {
+    word-break: break-all;
+  }
+</style>
