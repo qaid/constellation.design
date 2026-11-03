@@ -1,0 +1,97 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="App Privacy Policy" description="Privacy policy for apps published by Constellation Design.">
+  <section class="policy">
+    <div class="container-content">
+      <h1 class="policy__title">App Privacy Policy</h1>
+      <p class="policy__date">Effective date: 3 November 2026</p>
+
+      <h2>Who this covers</h2>
+      <p>
+        This policy applies to every app that Constellation Design publishes, including apps in the App Store and Google Play. The commitments below apply to all of these apps. If an app handles data in a way these commitments do not cover, that app has its own section on this page. An app section can add details. It never weakens the commitments.
+      </p>
+
+      <h2>Our commitments</h2>
+      <ul>
+        <li>Your data stays on your device, unless the app's section on this page says otherwise.</li>
+        <li>Passwords and sign-in tokens stay in your device's secure storage.</li>
+        <li>We do not sell your data or share it with third parties.</li>
+        <li>We do not show ads, and we do not use your data for advertising or to track you across apps and websites.</li>
+        <li>Our apps do not collect analytics, unless the app's section on this page says otherwise.</li>
+        <li>AI features run on your device, unless the app's section on this page says otherwise.</li>
+      </ul>
+
+      <h2>Services you connect</h2>
+      <p>
+        Some apps let you sign in to another service, such as an email account. The app then connects directly from your device to that service. That service's own privacy policy applies to the data it holds.
+      </p>
+
+      <h2>Google user data</h2>
+      <p>
+        If an app accesses Google user data, it uses that data only to provide the features you use in that app. It does not use Google user data for ads, does not sell it, and does not let people read it, except with your permission, for security, or to comply with the law.
+      </p>
+      <p>
+        The use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
+      </p>
+
+      <h2>Deleting your data</h2>
+      <p>
+        To delete the data an app keeps on your device, remove your account in the app or delete the app. If you signed in with an account from another service, such as Google, you can also remove the app's access in that account's security settings. If an app keeps data anywhere other than your device, its section on this page says how to ask for deletion.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        If this policy changes, this page shows the new version and a new effective date.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        For questions about this policy, email <a href="mailto:hello@constellation.design">hello@constellation.design</a>.
+      </p>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .policy {
+    padding-top: calc(var(--space-32) + var(--space-16));
+    padding-bottom: var(--space-24);
+  }
+
+  .policy__title {
+    font-size: clamp(var(--font-size-4xl), 8vw, var(--font-size-6xl));
+    margin-bottom: var(--space-4);
+  }
+
+  .policy__date {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-12);
+  }
+
+  .policy h2 {
+    font-size: var(--font-size-2xl);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
+  }
+
+  .policy p,
+  .policy ul {
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .policy ul {
+    padding-left: var(--space-6);
+    color: var(--color-text-secondary);
+  }
+
+  .policy li {
+    margin-bottom: var(--space-2);
+  }
+
+  .policy a {
+    text-decoration: underline;
+  }
+</style>
