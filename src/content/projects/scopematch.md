@@ -1,6 +1,6 @@
 ---
 title: "ScopeMatch"
-description: "A pan-European directory of ISO 17025 accredited testing laboratories. 13,700+ labs across 6 countries with unified search."
+description: "A pan-European directory of ISO 17025 accredited testing laboratories. 10,000+ verified labs across 7 countries with unified search."
 category: "Product Strategy"
 role: "Founder & Developer"
 year: "2025"
@@ -30,7 +30,7 @@ I built ScopeMatch to fix that.
 
 The interesting problem here isn't building a search engine. It's normalization. The same tensile test might be referenced as "EN ISO 6892-1" in Germany, "BS EN ISO 6892-1" in the UK, and "NF EN ISO 6892-1" in France. Multiply that across thousands of test methods and six languages, and you have a classification problem that's genuinely hard to solve at scale.
 
-I built a data platform that aggregates lab profiles and scope data from each national accreditation body and normalizes everything into a unified taxonomy. Automated classification maps test method variants across borders, so a search for one finds them all. The result: 13,700+ labs with over 122,000 capability variants, all searchable from one interface.
+I built a data platform that aggregates lab profiles and scope data from each national accreditation body and normalizes everything into a unified taxonomy. Automated classification maps test method variants across borders, so a search for one finds them all. The result: 10,000+ verified labs with over 126,000 testing capabilities, all searchable from one interface.
 
 <div class="image-grid image-grid--three">
   <img src="/images/work/scopematch/scopematch-1.webp" alt="ScopeMatch home page on a phone, with lab search" loading="lazy" decoding="async" />
@@ -53,7 +53,7 @@ The initial six countries - Germany, the UK, France, the Netherlands, Italy, and
 
 ### The Outcome
 
-ScopeMatch is live at [scopematch.eu](https://scopematch.eu) with 13,700+ labs across 6 countries, 97.5% geocoded, generating 10,000+ indexable pages. The platform serves quality engineers, procurement teams, and lab managers looking for accredited testing partners across European borders.
+ScopeMatch is live at [scopematch.eu](https://scopematch.eu) with 10,000+ verified labs across 7 countries, 98.5% geocoded, generating 10,900+ indexable pages. The platform serves quality engineers, procurement teams, and lab managers looking for accredited testing partners across European borders.
 
 ### Like what you see?
 
