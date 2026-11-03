@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 ---
 
-<PageLayout title="App Privacy Policy" description="Privacy policy for the apps that Constellation Design makes for personal use.">
+<PageLayout title="App Privacy Policy" description="Privacy policy for apps published by Constellation Design.">
   <section class="policy">
     <div class="container-content">
       <h1 class="policy__title">App Privacy Policy</h1>
@@ -10,41 +10,35 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
       <h2>Who this covers</h2>
       <p>
-        This policy covers every app that Constellation Design (Qa'id Jacobs, Amsterdam) makes for personal use. These apps are private tools. Only their maker uses them. They have no other users, no sign-up and no app store release. Every such app follows the rules below.
+        This policy applies to every app that Constellation Design publishes, including apps in the App Store and Google Play. The commitments below apply to all of these apps. If an app handles data in a way these commitments do not cover, that app has its own section on this page. An app section can add details. It never weakens the commitments.
       </p>
 
-      <h2>No developer server</h2>
-      <p>
-        The apps have no server run by Constellation Design. An app connects only to the services that you sign in to inside the app (for example Gmail, Microsoft 365, iCloud Mail or another IMAP mail provider) and to your own iCloud account.
-      </p>
-
-      <h2>Your data stays on your device</h2>
-      <p>
-        Your content, such as mail, stays on your device in a local database. Sign-in tokens and passwords stay in the macOS keychain. The apps send nothing to Constellation Design.
-      </p>
+      <h2>Our commitments</h2>
       <ul>
-        <li>No analytics.</li>
-        <li>No ads.</li>
-        <li>No tracking.</li>
-        <li>No sale or sharing of your data with anyone.</li>
+        <li>Your data stays on your device, unless the app's section on this page says otherwise.</li>
+        <li>Passwords and sign-in tokens stay in your device's secure storage.</li>
+        <li>We do not sell your data or share it with third parties.</li>
+        <li>We do not show ads, and we do not use your data for advertising or to track you across apps and websites.</li>
+        <li>Our apps do not collect analytics, unless the app's section on this page says otherwise.</li>
+        <li>AI features run on your device, unless the app's section on this page says otherwise.</li>
       </ul>
 
-      <h2>On-device AI only</h2>
+      <h2>Services you connect</h2>
       <p>
-        If an app sorts or summarizes your content, it uses only Apple's on-device models. Your content does not go to a cloud AI service.
+        Some apps let you sign in to another service, such as an email account. The app then connects directly from your device to that service. That service's own privacy policy applies to the data it holds.
       </p>
 
       <h2>Google user data</h2>
       <p>
-        If an app uses Google APIs, for example Gmail access with the scope <code>https://mail.google.com/</code>, it uses that data only to show, sort and manage your own mail in the app. The app does not use Google user data for any other purpose.
+        If an app accesses Google user data, it uses that data only to provide the features you use in that app. It does not use Google user data for ads, does not sell it, and does not let people read it, except with your permission, for security, or to comply with the law.
       </p>
       <p>
-        The apps' use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
+        The use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
       </p>
 
       <h2>Deleting your data</h2>
       <p>
-        When you remove an account in an app, the app deletes the local copy of that account's data and its saved sign-in from your device. You can also revoke the app's access at any time in your Google or Microsoft account settings.
+        To delete the data an app keeps on your device, remove your account in the app or delete the app. If you signed in with an account from another service, such as Google, you can also remove the app's access in that account's security settings. If an app keeps data anywhere other than your device, its section on this page says how to ask for deletion.
       </p>
 
       <h2>Changes</h2>
@@ -93,11 +87,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
     color: var(--color-text-secondary);
   }
 
-  .policy a {
-    text-decoration: underline;
+  .policy li {
+    margin-bottom: var(--space-2);
   }
 
-  .policy code {
-    word-break: break-all;
+  .policy a {
+    text-decoration: underline;
   }
 </style>
