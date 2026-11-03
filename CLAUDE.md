@@ -4,8 +4,8 @@ Creative consultancy driven by curiosity, led by Qa'id Jacobs from Amsterdam.
 
 ## Tech Stack
 
-- **Framework:** Astro 6.0.4
-- **Runtime:** Bun 1.3.3 (requires Node.js >= 22.12.0 for Astro 6)
+- **Framework:** Astro 7.4.2
+- **Runtime:** Bun 1.3.3 with Node.js 24 (Astro 7 requires Node.js >= 22.23.4)
 - **TypeScript:** Strict mode (`astro/tsconfigs/strict`)
 - **Deployment:** GitHub Pages via GitHub Actions
 - **Site:** https://constellation.design
@@ -22,7 +22,7 @@ bunx astro check    # TypeScript/Astro diagnostics
 
 ## Deployment
 
-Push to `main` triggers `.github/workflows/deploy.yml`, which sets up Node.js 22 and Bun, then builds and deploys to GitHub Pages. A monthly cron also triggers redeploy. Manual dispatch is available.
+Push to `main` triggers `.github/workflows/deploy.yml`, which sets up Node.js 24 and Bun, then builds and deploys to GitHub Pages. Manual dispatch is available. There is no scheduled redeploy: GitHub disables scheduled workflows in a public repo after 60 days without activity, which also stops deploys on push. The footer year updates on the first push of each year.
 
 ## Architecture
 
@@ -210,7 +210,7 @@ When building new Astro components:
 ## Known Limitations
 
 - **Permissions-Policy** cannot be set via meta tags — only via HTTP headers, which GitHub Pages does not support
-- **CSP** is managed by Astro 6's built-in CSP with automatic script/style hashing — configured in `astro.config.mjs` under `security.csp`
+- **CSP** is managed by Astro's built-in CSP with automatic script/style hashing — configured in `astro.config.mjs` under `security.csp`
 
 ## AI Agent Standards (as of early 2026)
 
