@@ -104,7 +104,7 @@ https://constellation.design/work/look-ma-no-hands
 **Year:** 2025
 **Industry:** Quality Assurance & Testing
 
-A pan-European directory of ISO 17025 accredited testing laboratories. 13,700+ labs across 6 countries with unified search.
+A pan-European directory of ISO 17025 accredited testing laboratories. 10,000+ verified labs across 7 countries with unified search.
 
 ScopeMatch aggregates data from six national accreditation bodies (DAkkS, UKAS, COFRAC, RvA, ACCREDIA, ENAC) into one unified, searchable directory. The platform normalises test method references across countries and languages using automated taxonomy classification. Founded and built by Qa'id.
 
