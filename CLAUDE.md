@@ -20,6 +20,8 @@ bun run preview     # Preview production build
 bunx astro check    # TypeScript/Astro diagnostics
 ```
 
+Astro 7 needs Node.js >= 22.23.4. If the default Node is older, put Node 24 first on PATH before `bun run build`, `bunx astro check` or a commit (the lefthook pre-commit hook runs both). After a pull that changes `bun.lock`, run `bun install --frozen-lockfile`.
+
 ## Deployment
 
 Push to `main` triggers `.github/workflows/deploy.yml`, which sets up Node.js 24 and Bun, then builds and deploys to GitHub Pages. Manual dispatch is available. There is no scheduled redeploy: GitHub disables scheduled workflows in a public repo after 60 days without activity, which also stops deploys on push. The footer year updates on the first push of each year.
@@ -58,7 +60,7 @@ Defined in `src/content.config.ts` (uses `glob()` loader):
 | `website` | `string` (URL) | Optional — live project URL, rendered as link in snapshot card |
 | `draft` | `boolean` | Default: `false` — draft entries are excluded from production |
 
-Image convention: `/images/work/{slug}/{slug}-cover.png` and `/images/work/{slug}/{slug}-{n}.png`
+Image convention: covers `/images/work/{slug}/{slug}-cover.png` (PNG, 1920x1200, also the og:image). New body images `/images/work/{slug}/{slug}-{n}.webp` (WebP, quality 85, 750 px wide for phone screens).
 
 ## Design System
 
@@ -103,6 +105,7 @@ const { label, variant = 'primary' } = Astro.props;
 - Use `data-*` attributes as JS hooks (`data-animate`, `data-theme`, etc.)
 - Theme-aware globals use `:global([data-theme="light"] .component)` pattern
 - Never use raw hex values — reference design tokens only
+- `data-animate` and `data-animate-stagger` content starts hidden. Each page that uses them includes its own IntersectionObserver script that adds `is-visible` (copy it from `about.astro`). Without that script the content never shows.
 
 ---
 
@@ -211,6 +214,7 @@ When building new Astro components:
 
 - **Permissions-Policy** cannot be set via meta tags — only via HTTP headers, which GitHub Pages does not support
 - **CSP** is managed by Astro's built-in CSP with automatic script/style hashing — configured in `astro.config.mjs` under `security.csp`
+- **CSS minifier (Astro 7):** keep `vite.build.cssTarget: ['safari14']` in `astro.config.mjs`, or media queries become range syntax that Safari < 16.4 ignores. Write a `-webkit-` prefixed property before the unprefixed one; the minifier keeps only the last of the pair.
 
 ## AI Agent Standards (as of early 2026)
 
